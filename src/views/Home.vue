@@ -24,7 +24,7 @@
         <h3>Presented by Radicle</h3>
         <h1>RADIO</h1>
         <h3>Made possible by Livepeer</h3>
-        <h2 id="timer">7d 4h 28m 5s</h2>
+        <h2 id="timer">7D 4H 28M 5S</h2>
     </div>
   </div>
 </template>
@@ -73,6 +73,10 @@ h3 {
   color: red;
 }
 
+* {
+  --spinner-margin: 20px;
+}
+
 #spinners > * {
   width: 150px;
   height: 150px;
@@ -82,28 +86,82 @@ h3 {
   position: fixed;
 }
 
-#spinners #spinner1 {
+#spinner1 {
   background-image: url(spinner1.png);
-  top: 2px;
-  left: 2px;
+  top: var(--spinner-margin);
+  left: var(--spinner-margin);
 }
 
-#spinners #spinner2 {
+#spinner2 {
   background-image: url(spinner2.png);
-  top: 2px;
-  right: 2px;
+  top: var(--spinner-margin);
+  right: var(--spinner-margin);
 }
 
-#spinners #spinner3 {
+#spinner3 {
   background-image: url(spinner3.png);
-  bottom: 2px;
-  left: 2px;
+  bottom: var(--spinner-margin);
+  left: var(--spinner-margin);
 }
 
-#spinners #spinner4 {
+#spinner4 {
   background-image: url(spinner4.png);
-  bottom: 2px;
-  right: 2px;
+  bottom: var(--spinner-margin);
+  right: var(--spinner-margin);
+}
+
+* {
+  --tribal-width: 300px;
+  --tribal-height: 80px;
+}
+
+#tribals > * {
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: fixed;
+}
+
+#tribal1 /* top */ {
+  width: var(--tribal-width);
+  height: var(--tribal-height);
+  background-image: url(tribal1.png);
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+#tribal2 /* right */ {
+  height: var(--tribal-width);
+  width: var(--tribal-height);
+  background-image: url(tribal2.png);
+  margin-top: auto;
+  margin-bottom: auto;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+#tribal3 {
+  width: var(--tribal-height);
+  height: var(--tribal-width);
+  background-image: url(tribal3.png);
+  margin-top: auto;
+  margin-bottom: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#tribal4 /* bottom */ {
+  height: var(--tribal-height);
+  width: var(--tribal-width);
+  background-image: url(tribal4.png);
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 @keyframes spin {
