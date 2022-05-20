@@ -4,26 +4,37 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-    <div class="login-page">
-        <div class="form">
-            <form class="login-form" action="login.php" method="post">
-                <input type="text" name="username" placeholder="username"/>
-                <input type="password" name="password" placeholder="password"/>
-                <button type="submit" name="login">login</button>
-                <p class="message">Not registered? <a href="register.php">Create an account</a></p>
-            </form>
-        </div>
+    <div id="spinners">
+        <div id="spinner1"></div>
+        <div id="spinner2"></div>
+        <div id="spinner3"></div>
+        <div id="spinner4"></div>
     </div>
 
-    <script>
-        (function titleScroller(text) {
-    document.title = text;
-    console.log(text);
-    setTimeout(function () {
-        titleScroller(text.substr(1) + text.substr(0, 1));
-    }, 500);
-    }(" Nature dff ssfd "));
-</script>
+    <div id="tribals">
+        <div id="tribal1"></div>
+        <div id="tribal2"></div>
+        <div id="tribal3"></div>
+        <div id="tribal4"></div>
+    </div>
+
+    <div id="text">
+        <h1>RAD RADIO</h1>
+        <h2>
+            <ul>
+                <li>Hosted by Hör</li>
+                <li>Presented by Radicle</li>
+                <li>Made possible by Livepeer</li>
+            </ul>
+        </h2>
+    </div>
+
+    <div id="timer">
+        <div id="days">7d</div>
+        <div id="hours">04h</div>
+        <div id="minutes">28m</div>
+        <div id="seconds">00s</div>
+    </div>
 
 </body>
 </html>
