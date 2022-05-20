@@ -1,5 +1,9 @@
+<script setup lang="ts">
+
+</script>
+
 <template>
-  <div class="home">
+  <div class="wrapper">
     <div id="spinners">
         <div id="spinner1"></div>
         <div id="spinner2"></div>
@@ -29,6 +33,16 @@
 @font-face {
   font-family: "Maxi";
   src: url(maxi.ttf) format("truetype");
+}
+
+.wrapper {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  overflow: hidden;
 }
 
 #text {
@@ -65,7 +79,7 @@ h3 {
   animation: spin 10s linear 0s infinite;
   background-size: contain;
   background-repeat: no-repeat;
-  position: absolute;
+  position: fixed;
 }
 
 #spinners #spinner1 {
