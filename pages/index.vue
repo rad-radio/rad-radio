@@ -20,7 +20,7 @@
         <h3>Presented by Radicle</h3>
         <h1>RADIO</h1>
         <h3>Made possible by Livepeer</h3>
-        <h2 id="timer">07D 04H 28M 05S</h2>
+        <h2 id="timer">7d 4h 28m 5s</h2>
     </div>
   </div>
 </template>
@@ -50,14 +50,13 @@ h1 {
 }
 
 h2 {
-  text-transform: uppercase;
   font-size: 5vw;
   line-height: 120%;
 }
 
 h3 {
+  font-size: 2vw;
   color: red;
-  text-transform: uppercase;
 }
 
 #spinners > * {

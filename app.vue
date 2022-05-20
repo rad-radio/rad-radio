@@ -5,12 +5,13 @@
 <style>
 body {
   background-color: #c5ff29;
-  font-family: "Maxi";
+  font-family: "Maxi", sans-serif;
   font-feature-settings: "tnum" on, "lnum" on, "ss02" on, "ss01" on;
   text-align: center;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 100vh;
+  justify-content: center;
   overflow: hidden;
 }
 </style>
