@@ -1,0 +1,55 @@
+@font-face {
+  font-family: "Maxi";
+  src: url(assets/maxi.ttf) format("truetype");
+}
+
+body {
+  background-color: #c5ff29;
+  font-family: "Maxi";
+  font-feature-settings: "tnum" on, "lnum" on, "ss02" on, "ss01" on;
+}
+
+#spinners > * {
+  width: 150px;
+  height: 150px;
+  animation: spin 10s linear 0s infinite;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+}
+
+#spinners #spinner1 {
+  background-image: url(assets/spinner1.png);
+  top: 2px;
+  left: 2px;
+}
+
+#spinners #spinner2 {
+  background-image: url(assets/spinner2.png);
+  top: 2px;
+  right: 2px;
+}
+
+#spinners #spinner3 {
+  background-image: url(assets/spinner3.png);
+  bottom: 2px;
+  left: 2px;
+}
+
+#spinners #spinner4 {
+  background-image: url(assets/spinner4.png);
+  bottom: 2px;
+  right: 2px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
