@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Home from './views/Home.vue'
-import About from './views/About.vue'
+import Stream from './views/Stream.vue'
+import StreamJason from './views/Stream-jason.vue'
 
 // For info on using Vue Router with the Composition API, see https://next.router.vuejs.org/guide/advanced/composition-api.html
 
@@ -11,9 +12,14 @@ const routes: Array<RouteRecordRaw> = [
     component: Home,
   },
   {
-    path: '/about',
-    name: 'About',
-    component: About,
+    path: '/stream',
+    name: 'Stream',
+    component: Stream,
+  },
+  {
+    path: '/stream-jason',
+    name: 'Stream-jason',
+    component: StreamJason,
   },
   // Fallback route for handling 404s
   {
