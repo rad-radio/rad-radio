@@ -7,6 +7,40 @@ body {
   background-color: #c5ff29;
   font-family: "Maxi";
   font-feature-settings: "tnum" on, "lnum" on, "ss02" on, "ss01" on;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+#text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+h1 {
+  font-size: 19vw;
+  line-height: 85%;
+}
+
+h2 {
+  text-transform: uppercase;
+  font-size: 5vw;
+  line-height: 120%;
+}
+
+h3 {
+  color: red;
+  text-transform: uppercase;
 }
 
 #spinners > * {
