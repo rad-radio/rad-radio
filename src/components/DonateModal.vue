@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { BigNumber, Contract, ethers } from 'ethers';
-import { markRaw, ref } from 'vue';
+import { markRaw, ref, watch } from 'vue';
 import { useEthers, useWallet } from 'vue-dapp';
 
 import daiAbi from '../eth/abis/Dai.abi.json';
@@ -30,6 +30,12 @@ const step = ref(Step.Intro);
 const buttonDisabled = ref(false);
 const txPending = ref(false);
 const donateAmount = ref<number>(5);
+
+watch(props, (v) => {
+  if (v.show === true) {
+    step.value = Step.Intro;
+  }
+});
 
 const checkAllowance = async (): Promise<BigNumber> => {
   if (!provider.value || !address.value) throw new Error("Not connected to wallet");
@@ -129,29 +135,31 @@ const buttonText = (text: string, noUser?: true) => {
 </script>
 
 <template>
-  <div class="wrapper" v-if="props.show">
-    <div class="background" @click="$emit('close')"></div>
-    <div class="modal">
-      <div class="step" v-if="step === Step.Intro">
-        <h1>Donate to the DJs</h1>
-        <button :disabled="buttonDisabled" @click="clickGetAnNft">Donate DAI & get an NFT</button>
-        <p class="link">Or send plain ETH or ERC-20</p>
-      </div>
-      <div class="step" v-else-if="step === Step.SetAmount">
-        <h1>Choose donation amount</h1>
-        <input type="number" min="0" v-model="donateAmount" />
-        <button :disabled="buttonDisabled" @click="clickSetAmount">{{buttonText('Donate', true)}}</button>
-      </div>
-      <div class="step" v-else-if="step === Step.ApproveContract">
-        <h1>Approve the Radicle Drips contract to take 10 of your DAI. You’ll need to open your wallet to do this.</h1>
-        <button :disabled="buttonDisabled" @click="clickApprove">{{buttonText('Approve')}}</button>
-      </div>
-      <div class="step" v-else-if="step === Step.Mint">
-        <img src="nft.png" alt="">
-        <button :disabled="buttonDisabled" @click="clickTakeMyMoney">{{buttonText('Take my money')}}</button>
+  <Transition>
+    <div class="wrapper" v-if="props.show">
+    <div class="background" v-if="props.show" @click="$emit('close')"></div>
+      <div class="modal">
+        <div class="step" v-if="step === Step.Intro">
+          <h1>Donate to the DJs</h1>
+          <button :disabled="buttonDisabled" @click="clickGetAnNft">Donate DAI & get NFT</button>
+          <p class="link">Or send plain ETH or ERC-20</p>
+        </div>
+        <div class="step" v-else-if="step === Step.SetAmount">
+          <h1>Choose donation amount</h1>
+          <p>Donate at least 5 DAI to get the NFT!</p>
+          <input type="number" min="0" v-model="donateAmount" />
+          <button :disabled="buttonDisabled" @click="clickSetAmount">{{buttonText('Donate', true)}}</button>
+        </div>
+        <div class="step" v-else-if="step === Step.ApproveContract">
+          <h1>Approve the Radicle Drips contract to take {{donateAmount}} of your DAI. You’ll need to open your wallet to do this.</h1>
+          <button :disabled="buttonDisabled" @click="clickApprove">{{buttonText('Approve')}}</button>
+        </div>
+        <div class="step" v-else-if="step === Step.Mint">
+          <button :disabled="buttonDisabled" @click="clickTakeMyMoney">{{buttonText('Take my money')}}</button>
+        </div>
       </div>
     </div>
-  </div>
+  </Transition>
 </template>
 
 <style scoped>
@@ -170,6 +178,23 @@ const buttonText = (text: string, noUser?: true) => {
   justify-content: center;
   align-items: center;
   z-index: 100;
+  transition: all .5s linear;
+}
+
+.v-leave-to .modal {
+  transform: translateY(100vh) rotate(160deg);
+}
+
+.v-enter-from .modal {
+  transform: translateY(100vh) rotate3d(1, 1, 1, 180deg);
+}
+
+.v-leave-to .background {
+  opacity: 0;
+}
+
+.v-enter-from .background {
+  opacity: 0;
 }
 
 .background {
@@ -179,6 +204,7 @@ const buttonText = (text: string, noUser?: true) => {
   left: 0;
   background-color: rgba(0,0,0,.5);
   position: fixed;
+  transition: all .5s linear;
 }
 
 .modal {
@@ -189,6 +215,7 @@ const buttonText = (text: string, noUser?: true) => {
   max-width: 576px;
   border-radius: 16px;
   z-index: 10;
+  transition: all .5s;
 }
 
 .step {
@@ -230,6 +257,9 @@ button:disabled {
 input {
   color: white;
   padding: 8px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100px;
   font-size: 32px;
   background: red;
   border: 1px solid;

@@ -33,7 +33,7 @@
 <style scoped>
 @font-face {
   font-family: "Maxi";
-  src: url(maxi.ttf) format("truetype");
+  src: url(/maxi.ttf) format("truetype");
 }
 
 *::selection {
@@ -93,25 +93,25 @@ h3 {
 }
 
 #spinner1 {
-  background-image: url(spinner1.png);
+  background-image: url(/spinner1.png);
   top: var(--spinner-margin);
   left: var(--spinner-margin);
 }
 
 #spinner2 {
-  background-image: url(spinner2.png);
+  background-image: url(/spinner2.png);
   top: var(--spinner-margin);
   right: var(--spinner-margin);
 }
 
 #spinner3 {
-  background-image: url(spinner3.png);
+  background-image: url(/spinner3.png);
   bottom: var(--spinner-margin);
   left: var(--spinner-margin);
 }
 
 #spinner4 {
-  background-image: url(spinner4.png);
+  background-image: url(/spinner4.png);
   bottom: var(--spinner-margin);
   right: var(--spinner-margin);
 }
@@ -130,7 +130,7 @@ h3 {
 #tribal1 /* top */ {
   width: var(--tribal-width);
   height: var(--tribal-height);
-  background-image: url(tribal1.png);
+  background-image: url(/tribal1.png);
   margin-left: auto;
   margin-right: auto;
   left: 0;
@@ -140,7 +140,7 @@ h3 {
 #tribal2 /* right */ {
   height: var(--tribal-width);
   width: var(--tribal-height);
-  background-image: url(tribal2.png);
+  background-image: url(/tribal2.png);
   margin-top: auto;
   margin-bottom: auto;
   top: 0;
@@ -151,7 +151,7 @@ h3 {
 #tribal3 {
   width: var(--tribal-height);
   height: var(--tribal-width);
-  background-image: url(tribal3.png);
+  background-image: url(/tribal3.png);
   margin-top: auto;
   margin-bottom: auto;
   top: 0;
@@ -162,7 +162,7 @@ h3 {
 #tribal4 /* bottom */ {
   height: var(--tribal-height);
   width: var(--tribal-width);
-  background-image: url(tribal4.png);
+  background-image: url(/tribal4.png);
   margin-left: auto;
   margin-right: auto;
   left: 0;
