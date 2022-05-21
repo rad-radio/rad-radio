@@ -21,6 +21,7 @@ enum Step {
   SetAmount,
   ApproveContract,
   Mint,
+  Success,
 }
 
 const { status, disconnect, error, walletName } = useWallet()
@@ -34,6 +35,8 @@ const donateAmount = ref<number>(5);
 watch(props, (v) => {
   if (v.show === true) {
     step.value = Step.Intro;
+    txPending.value = false;
+    buttonDisabled.value = false;
   }
 });
 
@@ -114,11 +117,16 @@ const clickTakeMyMoney = async () => {
   buttonDisabled.value = true;
   try {
     await mint(toWei(BigNumber.from(donateAmount.value)));
-    emit('close');
+    buttonDisabled.value = false;
+    step.value = Step.Success;
   } catch (e) {
     console.error(e);
     buttonDisabled.value = false;
   }
+}
+
+const clickCheers = () => {
+  emit('close');
 }
 
 const buttonText = (text: string, noUser?: true) => {
@@ -156,6 +164,11 @@ const buttonText = (text: string, noUser?: true) => {
         </div>
         <div class="step" v-else-if="step === Step.Mint">
           <button :disabled="buttonDisabled" @click="clickTakeMyMoney">{{buttonText('Take my money')}}</button>
+        </div>
+        <div class="step" v-else-if="step === Step.Success">
+          <h1>Success!</h1>
+          <p>Your NFT has been minted and put into your wallet. Thanks for your donation and enjoy the music.</p>
+          <button :disabled="buttonDisabled" @click="clickCheers">{{buttonText('Cheers')}}</button>
         </div>
       </div>
     </div>
