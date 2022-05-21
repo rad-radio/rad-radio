@@ -22,6 +22,7 @@ enum Step {
   ApproveContract,
   Mint,
   Success,
+  Error,
 }
 
 const { status, disconnect, error, walletName } = useWallet()
@@ -37,6 +38,7 @@ watch(props, (v) => {
     step.value = Step.Intro;
     txPending.value = false;
     buttonDisabled.value = false;
+    donateAmount.value = 5;
   }
 });
 
@@ -109,6 +111,7 @@ const clickApprove = async () => {
     buttonDisabled.value = false;
   } catch (e) {
     console.error(e);
+    step.value = Step.Error;
     buttonDisabled.value = false;
   }
 }
@@ -121,12 +124,17 @@ const clickTakeMyMoney = async () => {
     step.value = Step.Success;
   } catch (e) {
     console.error(e);
+    step.value = Step.Error;
     buttonDisabled.value = false;
   }
 }
 
 const clickCheers = () => {
   emit('close');
+}
+
+const clickRetry = () => {
+  step.value = Step.Intro;
 }
 
 const buttonText = (text: string, noUser?: true) => {
@@ -156,6 +164,7 @@ const buttonText = (text: string, noUser?: true) => {
           <h1>Choose donation amount</h1>
           <p>Donate at least 5 DAI to get the NFT!</p>
           <input type="number" min="0" v-model="donateAmount" />
+          <p>(Make sure you have enough DAI in your wallet!)</p>
           <button :disabled="buttonDisabled" @click="clickSetAmount">{{buttonText('Donate', true)}}</button>
         </div>
         <div class="step" v-else-if="step === Step.ApproveContract">
@@ -169,6 +178,11 @@ const buttonText = (text: string, noUser?: true) => {
           <h1>Success!</h1>
           <p>Your NFT has been minted and put into your wallet. Thanks for your donation and enjoy the music.</p>
           <button :disabled="buttonDisabled" @click="clickCheers">{{buttonText('Cheers')}}</button>
+        </div>
+        <div class="step" v-else-if="step === Step.Error">
+          <h1>😩 Oops!</h1>
+          <p>The transaction failed. Maybe you rejected it, or you don't have enough DAI in your wallet?</p>
+          <button :disabled="buttonDisabled" @click="clickRetry">{{buttonText('Retry')}}</button>
         </div>
       </div>
     </div>
