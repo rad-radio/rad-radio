@@ -147,6 +147,7 @@ const buttonText = (text: string, noUser?: true) => {
         <button :disabled="buttonDisabled" @click="clickApprove">{{buttonText('Approve')}}</button>
       </div>
       <div class="step" v-else-if="step === Step.Mint">
+        <img src="nft.png" alt="">
         <button :disabled="buttonDisabled" @click="clickTakeMyMoney">{{buttonText('Take my money')}}</button>
       </div>
     </div>
@@ -154,6 +155,11 @@ const buttonText = (text: string, noUser?: true) => {
 </template>
 
 <style scoped>
+
+*::selection {
+  background: rgba(179, 255, 0, 0.75);
+}
+
 .wrapper {
   height: 100vh;
   width: 100vw;
@@ -222,8 +228,16 @@ button:disabled {
 }
 
 input {
-  color: red;
+  color: white;
   padding: 8px;
   font-size: 32px;
+  background: red;
+  border: 1px solid;
+  border-radius: 50px;
+  padding: 20px 30px;
+}
+
+input:focus {
+  outline: none;
 }
 </style>

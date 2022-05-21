@@ -1,7 +1,7 @@
 body {
   background-color: #c5ff29;
   font-family: "Maxi", sans-serif;
-  font-feature-settings: "tnum" on, "lnum" on, "ss02" on, "ss01" on;
+  font-feature-settings: "tnum" on, "lnum" on, "ss02" on;
 }
 
 .btn {
@@ -10,4 +10,3 @@ body {
     hover:bg-gray-200 focus:outline-none
     disabled:cursor-default disabled:opacity-70 disabled:bg-gray-100;
 }
-

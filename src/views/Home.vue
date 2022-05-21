@@ -19,10 +19,11 @@
     </div>
 
     <div id="text">
+        <h2>RAD RADIO</h2>
         <h3>Hosted by Hör</h3>
-        <h1>RAD</h1>
+        <h1>Yha Yha</h1>
         <h3>Presented by Radicle</h3>
-        <h1>RADIO</h1>
+        <h1>DJ Heartstring</h1>
         <h3>Made possible by Livepeer</h3>
         <h2 id="timer">7D 4H 28M 5S</h2>
     </div>
@@ -33,6 +34,10 @@
 @font-face {
   font-family: "Maxi";
   src: url(maxi.ttf) format("truetype");
+}
+
+*::selection {
+  background: rgba(255, 255, 255, 0.75);
 }
 
 .wrapper {
@@ -59,12 +64,13 @@ h3 {
 }
 
 h1 {
-  font-size: 19vw;
+  font-size: 11vw;
   line-height: 85%;
+  color:blue
 }
 
 h2 {
-  font-size: 5vw;
+  font-size: 4vw;
   line-height: 120%;
 }
 
