@@ -22,11 +22,11 @@ const closeModal = () => {
   <div class="stream">
     <DonateModal @close="closeModal" :show="modalShown"/>
     <VideoPlayer />
-    <DonateButton @click="donate" v-if="isActivated" />
+    <DonateButton class="donate-button" @click="donate" v-if="isActivated && !modalShown" />
   </div>
 </template>
 
-<style>
+<style scoped>
 .stream {
   position: fixed;
   height: 100vh;
