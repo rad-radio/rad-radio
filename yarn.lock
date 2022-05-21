@@ -2425,6 +2425,11 @@
     "inherits" "^2.0.3"
     "minimalistic-assert" "^1.0.1"
 
+"hls.js@^1.1.5-0.canary.8383":
+  "integrity" "sha512-pUQFPy70E9nxlVRv565ZF5LuUPKXKgpvmWlKYYyT5tVierpVFdU5d91Zs+TUHaErUKld2UineONatu5Q7xHjBg=="
+  "resolved" "https://registry.npmjs.org/hls.js/-/hls.js-1.1.5-0.canary.8383.tgz"
+  "version" "1.1.5-0.canary.8383"
+
 "hmac-drbg@^1.0.1":
   "integrity" "sha1-0nRXAQJabHdabFRXk+1QL8DGSaE="
   "resolved" "https://registry.npmjs.org/hmac-drbg/-/hmac-drbg-1.0.1.tgz"
