@@ -30,12 +30,12 @@ function update() {
 
 //Check for border collision
 function checkHitBox(){
-  if(buttonProps.x + tvScreen.value?.getBoundingClientRect().width! >= window.innerWidth || buttonProps.x <= 0) {
+  if(buttonProps.x + tvScreen.value?.getBoundingClientRect().width! >= window.innerWidth && buttonProps.xspeed > 0 || buttonProps.x <= 0) {
     buttonProps.xspeed *= -1;
     pickColor();
   }
       
-  if(buttonProps.y + tvScreen.value?.getBoundingClientRect().height! >= window.innerHeight || buttonProps.y <= 0) {
+  if(buttonProps.y + tvScreen.value?.getBoundingClientRect().height! >= window.innerHeight && buttonProps.yspeed > 0 || buttonProps.y <= 0) {
     buttonProps.yspeed *= -1;
     pickColor();
   }    
