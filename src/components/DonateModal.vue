@@ -156,22 +156,26 @@ const buttonText = (text: string, noUser?: true) => {
     <div class="background" v-if="props.show" @click="$emit('close')"></div>
       <div class="modal">
         <div class="step" v-if="step === Step.Intro">
-          <h1>Donate to the DJs</h1>
-          <button :disabled="buttonDisabled" @click="clickGetAnNft">Donate DAI & get NFT</button>
+          <h1>Support the DJs</h1>
+          <button :disabled="buttonDisabled" @click="clickGetAnNft">Donate 5 DAI for the NFT</button>
           <p class="link">Or send plain ETH or ERC-20</p>
         </div>
         <div class="step" v-else-if="step === Step.SetAmount">
-          <h1>Choose donation amount</h1>
-          <p>Donate at least 5 DAI to get the NFT!</p>
-          <input type="number" min="0" v-model="donateAmount" />
+          <h1>Choose your donation</h1>
+          <!-- <p>Donate at least 5 DAI to get the NFT!</p> -->
+          <div id="donate-amount">
+            <input type="number" min="5" v-model="donateAmount" />
+            <span id="dai-label">DAI</span>
+            <button :disabled="buttonDisabled" @click="clickSetAmount">{{buttonText('Donate', true)}}</button>
+          </div>
           <p>(Make sure you have enough DAI in your wallet!)</p>
-          <button :disabled="buttonDisabled" @click="clickSetAmount">{{buttonText('Donate', true)}}</button>
         </div>
         <div class="step" v-else-if="step === Step.ApproveContract">
           <h1>Approve the Radicle Drips contract to take {{donateAmount}} of your DAI. You’ll need to open your wallet to do this.</h1>
           <button :disabled="buttonDisabled" @click="clickApprove">{{buttonText('Approve')}}</button>
         </div>
         <div class="step" v-else-if="step === Step.Mint">
+          <img id="nft-art" src="../assets/nft.png" alt="">
           <button :disabled="buttonDisabled" @click="clickTakeMyMoney">{{buttonText('Take my money')}}</button>
         </div>
         <div class="step" v-else-if="step === Step.Success">
@@ -229,18 +233,18 @@ const buttonText = (text: string, noUser?: true) => {
   width: 100vw;
   top: 0;
   left: 0;
-  background-color: rgba(0,0,0,.5);
   position: fixed;
   transition: all .5s linear;
 }
 
 .modal {
   background-color: red;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.4), 0px 11px 26px rgba(0, 0, 0, 0.25), inset 0px -4px 30px rgba(0, 0, 0, 0.8);
   padding: 32px;
   width: calc(100vw - 16px);
   margin: 16px;
   max-width: 576px;
-  border-radius: 16px;
+  border-radius: 48px;
   z-index: 10;
   transition: all .5s;
 }
@@ -261,6 +265,18 @@ const buttonText = (text: string, noUser?: true) => {
 
 .step > p {
   font-size: 18px;
+  font-feature-settings: "ss02" off;
+}
+
+#donate-amount {
+  display: flex;
+  flex-direction: row;
+  gap: 64px;
+  align-items: center;
+}
+
+#dai-label {
+  margin-left: -120px;
 }
 
 button {
@@ -274,7 +290,9 @@ button {
 }
 
 button:disabled {
-  opacity: .5;
+  color: white;
+  border: white solid;
+  background: red;
 }
 
 .link {
@@ -285,8 +303,7 @@ input {
   color: white;
   padding: 8px;
   box-sizing: border-box;
-  width: 100%;
-  max-width: 100px;
+  width: 170px;
   font-size: 32px;
   background: red;
   border: 1px solid;
@@ -294,7 +311,24 @@ input {
   padding: 20px 30px;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 input:focus {
   outline: none;
+}
+
+#nft-art {
+  border-radius: 16px;
+  transform: rotate(-5deg);
+  box-shadow: 0px 1px 6px rgb(0 0 0 / 40%), 0px 11px 26px rgb(0 0 0 / 25%), inset 0px -4px 30px rgb(0 0 0 / 80%);
+  margin-top: -120px;
 }
 </style>

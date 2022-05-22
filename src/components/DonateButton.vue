@@ -57,13 +57,22 @@ function pickColor(){
 
 <style scoped>
 .button {
+  transition: .5s box-shadow ease-in-out;
   position: fixed;
   top: 0;
   left: 0;
   padding: 24px;
-  border-radius: 8px;
+  border-radius: 48px;
   color: white;
-  text-shadow: 0 0 10px black;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
   cursor: pointer;
+  text-transform: uppercase;
+  font-feature-settings: "ss02" off;
+  letter-spacing: .1em;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.4), 0px 11px 26px rgba(0, 0, 0, 0.25), inset 0px -4px 30px rgba(0, 0, 0, 0.8);
+}
+
+.button:hover {
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.6), 0px 22px 50px rgba(0, 0, 0, 0.5), inset 0px -4px 30px rgba(0, 0, 0, 0.8);
 }
 </style>

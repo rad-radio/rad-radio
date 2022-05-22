@@ -21,9 +21,9 @@ const hover = ref(false);
               <div class="sm:hidden py-2 px-3 rounded-2xl inline-block bg-gray-100">
                 {{ shortenAddress(address) }}
               </div>
-              <div class="hidden sm:flex py-1 px-2 flex items-center rounded-3xl border border-solid">
-                <div class="px-1 mr-1">{{ displayEther(balance) }} ETH</div>
-                <div class="py-2 px-3 rounded-2xl inline-block bg-gray-100">
+              <div id="wallet-container" class="hidden sm:flex py-1 px-2 flex items-center rounded-3xl border border-solid">
+                <div class="px-1 mr-1">{{ displayEther(balance) }} <span id="eth">ETH</span></div>
+                <div id="small-wallet" class="py-2 px-3 rounded-2xl inline-block">
                   {{ shortenAddress(address) }}
                 </div>
               </div>
@@ -43,12 +43,26 @@ header {
   z-index: 10;
 }
 
+#wallet-container {
+  border:red solid;
+  border-radius: 40px;
+  padding: 8px 8px 8px 16px;
+}
+
+#small-wallet {
+  background:red;
+  color: white;
+  border-radius: 40px;
+  padding: 8px 16px;
+}
+
 .disconnect {
   position: relative;
 }
 
 .disconnect-overlay {
-  background-color: white;
+  background-color: red;
+  color: white;
   position: absolute;
   top: 0;
   left: 0;
@@ -59,5 +73,12 @@ header {
   justify-content: center;
   border-radius: 50px;
   cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-feature-settings: "ss02" off;
+}
+
+#eth {
+  font-feature-settings: "ss02" off;
 }
 </style>
