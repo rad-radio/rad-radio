@@ -64,6 +64,7 @@ h3 {
 }
 
 h1 {
+  /* font-size: 11vw; smaller headline for when the DJs are announced*/
   font-size: 18vw;
   line-height: 85%;
   color:blue

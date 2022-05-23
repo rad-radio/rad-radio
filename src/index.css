@@ -1,6 +1,7 @@
 body {
   background-color: #c5ff29;
   font-family: "Maxi", sans-serif;
+  font-weight: regular;
   font-feature-settings: "tnum" on, "lnum" on, "ss02" on;
 }
 
