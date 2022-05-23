@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { BigNumber, Contract, ethers } from 'ethers';
-import { markRaw, onMounted, ref, watch } from 'vue';
-import { useEthers, useWallet } from 'vue-dapp';
+import { BigNumber, Contract } from 'ethers';
+import { markRaw, ref, watch } from 'vue';
+import { useEthers } from 'vue-dapp';
 
 import daiAbi from '../eth/abis/Dai.abi.json';
 import dripsTokenAbi from '../eth/abis/DripsToken.abi.json';
@@ -11,7 +11,7 @@ const props = defineProps({
   show: Boolean,
 });
 
-const COMMUNITY_CONTRACT_ADDRESS = '0x6999c2bf16a0a3fd416af24bde0e4d37b424da7d';
+const COMMUNITY_CONTRACT_ADDRESS = '0x0d5241b0896f7d7302a840c4dca8f5b7cf22de14';
 // rinkeby: const COMMUNITY_CONTRACT_ADDRESS = '0x89eb58c8598d07f14852ad74e242187dbcbdf7ec';
 const DAI_CONTRACT_ADDRESS = '0x6b175474e89094c44da98b954eedeac495271d0f';
 // rinkeby: const DAI_CONTRACT_ADDRESS = '0x5592ec0cfb4dbc12d3ab100b257153436a1f0fea';
