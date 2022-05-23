@@ -176,6 +176,7 @@ const buttonText = (text: string, noUser?: true) => {
         </div>
         <div class="step" v-else-if="step === Step.Mint">
           <img id="nft-art" src="../assets/nft.png" alt="">
+          <p>Now, send your donation of {{donateAmount}} DAI to the artists and get the above NFT sent to your wallet!</p>
           <button :disabled="buttonDisabled" @click="clickTakeMyMoney">{{buttonText('Take my money')}}</button>
         </div>
         <div class="step" v-else-if="step === Step.Success">
