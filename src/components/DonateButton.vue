@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// Inspired by https://github.com/AlessioMaddaluno/bouncing-dvd-logo
 import { onMounted, reactive, ref } from 'vue';
 
 let speed = 10;
@@ -28,7 +29,6 @@ function update() {
   }, speed)
 }
 
-//Check for border collision
 function checkHitBox(){
   if(buttonProps.x + tvScreen.value?.getBoundingClientRect().width! >= window.innerWidth && buttonProps.xspeed > 0 || buttonProps.x <= 0) {
     buttonProps.xspeed *= -1;
