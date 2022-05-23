@@ -166,7 +166,7 @@ const buttonText = (text: string, noUser?: true) => {
           <div id="donate-amount">
             <input type="number" min="5" v-model="donateAmount" />
             <span id="dai-label">DAI</span>
-            <button :disabled="buttonDisabled" @click="clickSetAmount">{{buttonText('Donate', true)}}</button>
+            <button :disabled="buttonDisabled" @click="clickSetAmount">{{buttonText('Continue', true)}}</button>
           </div>
           <p>(Make sure you have enough DAI in your wallet!)</p>
         </div>
