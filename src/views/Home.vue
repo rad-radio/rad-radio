@@ -25,8 +25,10 @@
         <h1>RADIO</h1>
         <h3>Made possible by Livepeer</h3>
         <h2 id="timer">
-          <vue-countdown :time="(1653508800 * 1000) - new Date().getTime()" v-slot="{ days, hours, minutes, seconds }">
-            {{ days }}D {{ hours }}H {{ minutes }}M {{ seconds }}S
+          <!--1653508800-->
+          <vue-countdown :time="(1653311699 * 1000) - new Date().getTime()" v-slot="{ days, hours, minutes, seconds }">
+            <span v-if="days !== 0 || hours !== 0 || minutes !== 0 || seconds !== 0">{{ days }}D {{ hours }}H {{ minutes }}M {{ seconds }}S</span>
+            <button class="watch-button" @click="$router.push('/stream')" v-if="(days === 0 && hours === 0 && minutes === 0 && seconds === 0)">WATCH THE STREAM</button>
           </vue-countdown>
         </h2>
     </div>
@@ -178,5 +180,14 @@ h3 {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.watch-button {
+  margin-top: 16px;
+  font-feature-settings: "ss02" off;
+  font-weight: bold;
+  padding: 2vw;
+  border-radius: 128px;
+  outline: 2px solid blue;
 }
 </style>
