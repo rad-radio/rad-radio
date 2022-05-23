@@ -162,12 +162,12 @@ const buttonText = (text: string, noUser?: true) => {
           <p class="link">Or send plain ETH or ERC-20</p>
         </div>
         <div class="step" v-else-if="step === Step.SetAmount">
-          <h1>Choose your donation</h1>
+          <h1>Choose your donation.<br>The minimum is 5 DAI.</h1>
           <!-- <p>Donate at least 5 DAI to get the NFT!</p> -->
           <div id="donate-amount">
             <input type="number" min="5" v-model="donateAmount" />
             <span id="dai-label">DAI</span>
-            <button :disabled="buttonDisabled" @click="clickSetAmount">{{buttonText('Continue', true)}}</button>
+            <button :disabled="buttonDisabled || donateAmount < 5" @click="clickSetAmount">{{buttonText('Continue', true)}}</button>
           </div>
           <p>(Make sure you have enough DAI in your wallet!)</p>
         </div>
@@ -296,6 +296,7 @@ button:disabled {
   color: white;
   border: white solid;
   background: red;
+  cursor: not-allowed;
 }
 
 .link {
