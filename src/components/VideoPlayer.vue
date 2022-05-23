@@ -27,8 +27,8 @@
   <Transition>
     <div class="muted-overlay" v-if="muted" @click="muted = false">
       <div class="content">
-        <img width="48" height="48"  src="/volume-mute.svg" class="mute-icon"/>
-        Click to jam
+        <h1>🔊</h1>
+        UNMUTE
       </div>
     </div>
   </Transition>
@@ -65,7 +65,6 @@ video {
   right: 0;
   bottom: 0;
   font-size: 24px;
-  background-color: rgba(0,0,0,0.6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,5 +82,13 @@ video {
   flex-direction: column;
   gap: 16px;
   transition: all .3s;
+  background: red;
+  padding: 32px;
+  border-radius: 100%;
+  font-feature-settings: "ss02" off;
+}
+
+.content h1 {
+  font-size: 48px;
 }
 </style>

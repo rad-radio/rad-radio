@@ -66,6 +66,7 @@ function pickColor(){
   top: 0;
   left: 0;
 }
+
 .button {
   transition: .5s box-shadow ease-in-out;
   padding: 24px;

@@ -21,6 +21,20 @@ const closeModal = () => {
 
 <template>
   <LayoutHeader />
+  <div id="spinners">
+      <a id="spinner1" href="https://hoerberlin.com/" target="_blank"></a>
+      <div id="spinner2"></div>
+      <a id="spinner3" href="https://livepeer.org/" target="_blank"></a>
+      <a id="spinner4" href="https://radicle.xyz/" target="_blank"></a>
+  </div>
+
+  <div id="tribals">
+      <div id="tribal1"></div>
+      <div id="tribal2"></div>
+      <div id="tribal3"></div>
+      <div id="tribal4"></div>
+  </div>
+  
   <div class="stream">
     <DonateModal @close="closeModal" :show="modalShown"/>
     <VideoPlayer />

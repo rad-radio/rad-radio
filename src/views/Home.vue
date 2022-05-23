@@ -4,10 +4,10 @@
 <template>
   <div class="wrapper">
     <div id="spinners">
-        <div id="spinner1"></div>
-        <div id="spinner2"></div>
-        <div id="spinner3"></div>
-        <div id="spinner4"></div>
+      <a id="spinner1" href="https://hoerberlin.com/" target="_blank"></a>
+      <div id="spinner2"></div>
+      <a id="spinner3" href="https://livepeer.org/" target="_blank"></a>
+      <a id="spinner4" href="https://radicle.xyz/" target="_blank"></a>
     </div>
 
     <div id="tribals">
