@@ -19,11 +19,11 @@
     </div>
 
     <div id="text">
-        <h2>RAD RADIO</h2>
+        <!-- <h2>RAD RADIO</h2> -->
         <h3>Hosted by Hör</h3>
-        <h1>Yha Yha</h1>
+        <h1>RAD</h1>
         <h3>Presented by Radicle</h3>
-        <h1>DJ Heartstring</h1>
+        <h1>RADIO</h1>
         <h3>Made possible by Livepeer</h3>
         <h2 id="timer">7D 4H 28M 5S</h2>
     </div>
@@ -64,7 +64,7 @@ h3 {
 }
 
 h1 {
-  font-size: 11vw;
+  font-size: 18vw;
   line-height: 85%;
   color:blue
 }
