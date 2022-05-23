@@ -170,10 +170,8 @@ const buttonText = (text: string, noUser?: true) => {
         </div>
         <div class="step" v-else-if="step === Step.SetAmount">
           <h1>Choose your donation.<br>The minimum is 5 DAI.</h1>
-          <!-- <p>Donate at least 5 DAI to get the NFT!</p> -->
           <div id="donate-amount">
             <input type="number" min="5" v-model="donateAmount" />
-            <span id="dai-label">DAI</span>
             <button :disabled="buttonDisabled || donateAmount < 5" @click="clickSetAmount">{{buttonText('Continue', true)}}</button>
           </div>
           <p>(Make sure you have enough DAI in your wallet!)</p>
@@ -265,7 +263,7 @@ const buttonText = (text: string, noUser?: true) => {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 32px;
+  gap: 8px;
   text-align: center;
 }
 
@@ -282,7 +280,7 @@ const buttonText = (text: string, noUser?: true) => {
 #donate-amount {
   display: flex;
   flex-direction: row;
-  gap: 64px;
+  gap: 16px;
   align-items: center;
 }
 
@@ -292,8 +290,7 @@ const buttonText = (text: string, noUser?: true) => {
 
 button {
   display: block;
-  height: 90px;
-  padding: 0 32px;
+  padding: 8px 32px;
   font-size: 32px;
   color: red;
   background-color: white;
@@ -303,7 +300,7 @@ button {
 button:disabled {
   color: white;
   border: white solid;
-  background: red;
+  background: transparent;
   cursor: not-allowed;
 }
 
@@ -316,12 +313,12 @@ input {
   color: white;
   padding: 8px;
   box-sizing: border-box;
-  width: 170px;
+  width: 110px;
   font-size: 32px;
-  background: red;
+  background: transparent;
   border: 1px solid;
   border-radius: 50px;
-  padding: 20px 30px;
+  padding: 8px 24px;
 }
 
 input::-webkit-outer-spin-button,

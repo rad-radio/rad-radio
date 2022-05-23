@@ -6,7 +6,7 @@ body {
 
 @font-face {
   font-family: "Maxi";
-  src: url("/fonts/ABCMaxiRoundVariable.woff2") format('woff2');
+  src: url("/fonts/ABCMaxiRoundVariable.woff2") format("woff2");
 }
 
 .btn {

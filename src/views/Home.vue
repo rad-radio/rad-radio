@@ -4,10 +4,10 @@
 <template>
   <div class="wrapper">
     <div id="spinners">
-        <div id="spinner1"></div>
-        <div id="spinner2"></div>
-        <div id="spinner3"></div>
-        <div id="spinner4"></div>
+      <a id="spinner1" href="https://hoerberlin.com/" target="_blank"></a>
+      <div id="spinner2"></div>
+      <a id="spinner3" href="https://livepeer.org/" target="_blank"></a>
+      <a id="spinner4" href="https://radicle.xyz/" target="_blank"></a>
     </div>
 
     <div id="tribals">
@@ -19,11 +19,11 @@
 
     <div id="text">
         <!-- <h2>RAD RADIO</h2> -->
-        <h3>Hosted by Hör</h3>
+        <h3>Hosted by <a href="https://hoerberlin.com/" target="_blank">Hör</a></h3>
         <h1>RAD</h1>
-        <h3>Presented by Radicle</h3>
+        <h3>Presented by <a href="https://radicle.xyz/" target="_blank">Radicle</a></h3>
         <h1>RADIO</h1>
-        <h3>Made possible by Livepeer</h3>
+        <h3>Streamed with <a href="https://livepeer.org/" target="_blank">Livepeer</a></h3>
         <h2 id="timer">
           <vue-countdown :time="(1653508800 * 1000) - new Date().getTime()" v-slot="{ days, hours, minutes, seconds }">
             <span v-if="days !== 0 || hours !== 0 || minutes !== 0 || seconds !== 0">{{ days }}D {{ hours }}H {{ minutes }}M {{ seconds }}S</span>
@@ -60,9 +60,11 @@ h1,
 h2,
 h3 {
   margin: 0;
+  cursor: default;
 }
 
 h1 {
+  /* font-size: 11vw; smaller headline for when the DJs are announced*/
   font-size: 18vw;
   line-height: 85%;
   color:blue
@@ -76,6 +78,16 @@ h2 {
 h3 {
   font-size: 2vw;
   color: red;
+  z-index: 100;
+}
+
+h3 a {
+  border: 2px solid transparent;
+}
+
+h3 a:hover {
+  border-radius: 100%;
+  border: 2px solid red;
 }
 
 * {
