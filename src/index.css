@@ -1,12 +1,12 @@
 body {
   background-color: #c5ff29;
   font-family: "Maxi", sans-serif;
-  font-feature-settings: "tnum" on, "lnum" on, "ss02" on;
+  font-feature-settings: "ss01", "tnum" on, "lnum" on, "ss02" on;
 }
 
 @font-face {
   font-family: "Maxi";
-  src: url("/fonts/ABCMaxiRound-Regular.woff") format('woff');
+  src: url("/fonts/ABCMaxiRoundVariable.woff2") format('woff2');
 }
 
 .btn {
