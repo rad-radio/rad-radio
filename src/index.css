@@ -4,6 +4,11 @@ body {
   font-feature-settings: "tnum" on, "lnum" on, "ss02" on;
 }
 
+@font-face {
+  font-family: "Maxi";
+  src: url("/fonts/ABCMaxiRound-Regular.woff") format('woff');
+}
+
 .btn {
   @apply px-6 py-3 rounded inline-block
     bg-gray-100 text-gray-600 cursor-pointer

@@ -34,11 +34,6 @@
 </template>
 
 <style scoped>
-@font-face {
-  font-family: "Maxi";
-  src: url(/maxi.ttf) format("truetype");
-}
-
 *::selection {
   background: rgba(255, 255, 255, 0.75);
 }
