@@ -19,11 +19,11 @@
 
     <div id="text">
         <!-- <h2>RAD RADIO</h2> -->
-        <h3>Hosted by Hör</h3>
+        <h3>Hosted by <a href="https://hoerberlin.com/" target="_blank">Hör</a></h3>
         <h1>RAD</h1>
-        <h3>Presented by Radicle</h3>
+        <h3>Presented by <a href="https://radicle.xyz/" target="_blank">Radicle</a></h3>
         <h1>RADIO</h1>
-        <h3>Streamed with Livepeer</h3>
+        <h3>Streamed with <a href="https://livepeer.org/" target="_blank">Livepeer</a></h3>
         <h2 id="timer">
           <vue-countdown :time="(1653508800 * 1000) - new Date().getTime()" v-slot="{ days, hours, minutes, seconds }">
             {{ days }}D {{ hours }}H {{ minutes }}M {{ seconds }}S
@@ -59,6 +59,7 @@ h1,
 h2,
 h3 {
   margin: 0;
+  cursor: default;
 }
 
 h1 {
@@ -76,6 +77,16 @@ h2 {
 h3 {
   font-size: 2vw;
   color: red;
+  z-index: 100;
+}
+
+h3 a {
+  border: 2px solid transparent;
+}
+
+h3 a:hover {
+  border-radius: 100%;
+  border: 2px solid red;
 }
 
 * {
