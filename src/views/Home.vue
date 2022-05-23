@@ -23,7 +23,7 @@
         <h1>RAD</h1>
         <h3>Presented by Radicle</h3>
         <h1>RADIO</h1>
-        <h3>Made possible by Livepeer</h3>
+        <h3>Streamed with Livepeer</h3>
         <h2 id="timer">
           <vue-countdown :time="(1653508800 * 1000) - new Date().getTime()" v-slot="{ days, hours, minutes, seconds }">
             {{ days }}D {{ hours }}H {{ minutes }}M {{ seconds }}S
