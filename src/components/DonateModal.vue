@@ -5,6 +5,7 @@ import { useEthers, useWallet } from 'vue-dapp';
 
 import daiAbi from '../eth/abis/Dai.abi.json';
 import dripsTokenAbi from '../eth/abis/DripsToken.abi.json';
+import AddressCopyButton from './AddressCopyButton.vue';
 
 const props = defineProps({
   show: Boolean,
@@ -27,8 +28,7 @@ enum Step {
   Error,
 }
 
-const { status, disconnect, error, walletName } = useWallet()
-const { address, balance, chainId, isActivated, provider, signer } = useEthers()
+const { address, provider, signer } = useEthers();
 
 const step = ref(Step.Intro);
 const buttonDisabled = ref(false);
@@ -159,7 +159,14 @@ const buttonText = (text: string, noUser?: true) => {
         <div class="step" v-if="step === Step.Intro">
           <h1>Support the DJs</h1>
           <button :disabled="buttonDisabled" @click="clickGetAnNft">Donate 5 DAI for the NFT</button>
-          <p class="link">Or send plain ETH or ERC-20</p>
+          <p @click="step = Step.ERC20" class="link">Or send plain ETH or ERC-20</p>
+        </div>
+        <div class="step" v-if="step === Step.ERC20">
+          <h1>💰 Donate ETH or ERC-20 💰</h1>
+          <p>It'll go straight to the artists!</p>
+          <img src="/address.svg" />
+          <AddressCopyButton address="0x1665f71Ca63cd880A6294a16F4342485bAc12A46" />
+          <button :disabled="buttonDisabled" @click="$emit('close')">Done</button>
         </div>
         <div class="step" v-else-if="step === Step.SetAmount">
           <h1>Choose your donation.<br>The minimum is 5 DAI.</h1>
@@ -264,6 +271,7 @@ const buttonText = (text: string, noUser?: true) => {
 
 .step > h1 {
   font-size: 32px;
+  font-feature-settings: "ss02" off;
 }
 
 .step > p {
@@ -301,6 +309,7 @@ button:disabled {
 
 .link {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 input {
