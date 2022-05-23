@@ -4,6 +4,7 @@ import { useEthers } from 'vue-dapp';
 import DonateButton from '../components/DonateButton.vue';
 import DonateModal from '../components/DonateModal.vue';
 import VideoPlayer from '../components/VideoPlayer.vue';
+import LayoutHeader from '../components/LayoutHeader.vue'
 
 const modalShown = ref(false);
 
@@ -19,6 +20,7 @@ const closeModal = () => {
 </script>
 
 <template>
+  <LayoutHeader />
   <div class="stream">
     <DonateModal @close="closeModal" :show="modalShown"/>
     <VideoPlayer />
