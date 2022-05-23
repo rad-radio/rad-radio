@@ -1,7 +1,9 @@
 <script setup lang="ts">
+// Inspired by https://github.com/AlessioMaddaluno/bouncing-dvd-logo
 import { onMounted, reactive, ref } from 'vue';
 
 let speed = 10;
+const hover = ref(false);
 
 let buttonProps = reactive({
     x: 200,
@@ -21,14 +23,15 @@ onMounted(() => {
 
 function update() {
   setTimeout(() => {
-    buttonProps.x += buttonProps.xspeed;
-    buttonProps.y += buttonProps.yspeed;
-    checkHitBox();
+    if (!hover.value) {
+      buttonProps.x += buttonProps.xspeed;
+      buttonProps.y += buttonProps.yspeed;
+      checkHitBox();
+    }
     update();   
   }, speed)
 }
 
-//Check for border collision
 function checkHitBox(){
   if(buttonProps.x + tvScreen.value?.getBoundingClientRect().width! >= window.innerWidth && buttonProps.xspeed > 0 || buttonProps.x <= 0) {
     buttonProps.xspeed *= -1;
@@ -52,15 +55,19 @@ function pickColor(){
 </script>
 
 <template>
-  <div class="button" ref="tvScreen" :style="{ transform: `translate(${buttonProps.x}px, ${buttonProps.y}px)`, backgroundColor: buttonProps.color }">Donate and get an NFT</div>
+  <div class="wrapper" :style="{ transform: `translate(${buttonProps.x}px, ${buttonProps.y}px)`}">
+    <div :style="{  backgroundColor: buttonProps.color }" @mouseenter="hover = true" @mouseleave="hover = false" class="button" ref="tvScreen">Donate and get an NFT</div>
+  </div>
 </template>
 
 <style scoped>
-.button {
-  transition: .5s box-shadow ease-in-out;
+.wrapper {
   position: fixed;
   top: 0;
   left: 0;
+}
+.button {
+  transition: .5s box-shadow ease-in-out;
   padding: 24px;
   border-radius: 48px;
   color: white;
@@ -73,6 +80,25 @@ function pickColor(){
 }
 
 .button:hover {
+  animation: jiggle .2s linear infinite;
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.6), 0px 22px 50px rgba(0, 0, 0, 0.5), inset 0px -4px 30px rgba(0, 0, 0, 0.8);
+}
+
+@keyframes jiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 </style>

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 </script>
 
 <template>
@@ -25,17 +24,16 @@
         <h3>Presented by Radicle</h3>
         <h1>RADIO</h1>
         <h3>Made possible by Livepeer</h3>
-        <h2 id="timer">7D 4H 28M 5S</h2>
+        <h2 id="timer">
+          <vue-countdown :time="(1653508800 * 1000) - new Date().getTime()" v-slot="{ days, hours, minutes, seconds }">
+            {{ days }}D {{ hours }}H {{ minutes }}M {{ seconds }}S
+          </vue-countdown>
+        </h2>
     </div>
   </div>
 </template>
 
 <style scoped>
-@font-face {
-  font-family: "Maxi";
-  src: url(/maxi.ttf) format("truetype");
-}
-
 *::selection {
   background: rgba(255, 255, 255, 0.75);
 }

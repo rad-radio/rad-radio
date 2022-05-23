@@ -3,6 +3,7 @@
   import Hls from 'hls.js';
 
   const videoEl = ref<HTMLVideoElement | null>(null);
+  const muted = ref(true);
 
   const SRC = "https://multiplatform-f.akamaihd.net/i/multi/will/bunny/big_buck_bunny_,640x360_400,640x360_700,640x360_1000,950x540_1500,.f4v.csmil/master.m3u8";
 
@@ -22,13 +23,65 @@
 </script>
 
 <template>
-  <video ref="videoEl" autoplay muted/>
+  <video ref="videoEl" autoplay :muted="muted" @click="muted = true"/>
+  <Transition>
+    <div class="muted-overlay" v-if="muted" @click="muted = false">
+      <div class="content">
+        <img width="48" height="48"  src="/volume-mute.svg" class="mute-icon"/>
+        Click to jam
+      </div>
+    </div>
+  </Transition>
 </template>
 
-<style>
+<style scoped>
 video {
   height: 100vh;
   width: 100vw;
   object-fit: cover;
+}
+
+.v-leave-to {
+  opacity: 0;
+}
+
+.v-leave-to .content {
+  opacity: 0;
+  transform: rotate(500deg) scale(3);
+}
+
+.v-enter-from {
+  opacity: 0;
+}
+
+.v-enter-from .content {
+  transform: rotate(500deg) scale(3);
+}
+
+.muted-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  font-size: 24px;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 16px;
+  transition: all .3s;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+  transition: all .3s;
 }
 </style>
