@@ -5,7 +5,7 @@
   const videoEl = ref<HTMLVideoElement | null>(null);
   const muted = ref(true);
 
-  const SRC = "https://livepeercdn.com/hls/3841ort45mi0gnds/index.m3u8";
+  const SRC = "https://livepeercdn.com/hls/fb8ehwxexly8qzep/index.m3u8";
 
   onMounted(() => {
     if (!videoEl.value) throw new Error("Unable to initialize player");
