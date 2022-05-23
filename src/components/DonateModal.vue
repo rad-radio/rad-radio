@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { BigNumber, Contract, ethers } from 'ethers';
-import { markRaw, ref, watch } from 'vue';
+import { markRaw, onMounted, ref, watch } from 'vue';
 import { useEthers, useWallet } from 'vue-dapp';
 
 import daiAbi from '../eth/abis/Dai.abi.json';
@@ -10,8 +10,10 @@ const props = defineProps({
   show: Boolean,
 });
 
-const COMMUNITY_CONTRACT_ADDRESS = '0x89eb58c8598d07f14852ad74e242187dbcbdf7ec';
-const DAI_CONTRACT_ADDRESS = '0x5592ec0cfb4dbc12d3ab100b257153436a1f0fea';
+const COMMUNITY_CONTRACT_ADDRESS = '0x6999c2bf16a0a3fd416af24bde0e4d37b424da7d';
+// rinkeby: const COMMUNITY_CONTRACT_ADDRESS = '0x89eb58c8598d07f14852ad74e242187dbcbdf7ec';
+const DAI_CONTRACT_ADDRESS = '0x6b175474e89094c44da98b954eedeac495271d0f';
+// rinkeby: const DAI_CONTRACT_ADDRESS = '0x5592ec0cfb4dbc12d3ab100b257153436a1f0fea';
 
 const emit = defineEmits(['close']);
 
@@ -49,11 +51,10 @@ const checkAllowance = async (): Promise<BigNumber> => {
   return await daiContract.allowance(address.value, COMMUNITY_CONTRACT_ADDRESS);
 }
 
-const approve = async () => {
+const approve = async (amount: BigNumber) => {
   if (!signer.value || !address.value) throw new Error("Not connected to wallet");
 
   const daiContract = markRaw(new Contract(DAI_CONTRACT_ADDRESS, daiAbi, signer.value));
-  const amount = ethers.constants.MaxUint256;
 
   const tx = await daiContract.approve(COMMUNITY_CONTRACT_ADDRESS, amount);
   txPending.value = true;
@@ -106,7 +107,7 @@ const clickApprove = async () => {
   buttonDisabled.value = true;
 
   try {
-    await approve();
+    await approve(toWei(BigNumber.from(donateAmount.value)));
     step.value = Step.Mint;
     buttonDisabled.value = false;
   } catch (e) {
@@ -172,6 +173,7 @@ const buttonText = (text: string, noUser?: true) => {
         </div>
         <div class="step" v-else-if="step === Step.ApproveContract">
           <h1>Approve the Radicle Drips contract to take {{donateAmount}} of your DAI. You’ll need to open your wallet to do this.</h1>
+          <p>Please note that you'll need to send another transaction to mint the NFT after this.</p>
           <button :disabled="buttonDisabled" @click="clickApprove">{{buttonText('Approve')}}</button>
         </div>
         <div class="step" v-else-if="step === Step.Mint">
