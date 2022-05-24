@@ -23,7 +23,6 @@ const closeModal = () => {
   <LayoutHeader />
   <div id="spinners">
       <a id="spinner1" href="https://hoerberlin.com/" target="_blank"></a>
-      <div id="spinner2"></div>
       <a id="spinner3" href="https://livepeer.org/" target="_blank"></a>
       <a id="spinner4" href="https://radicle.xyz/" target="_blank"></a>
   </div>

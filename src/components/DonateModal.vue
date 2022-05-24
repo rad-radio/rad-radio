@@ -155,7 +155,7 @@ const buttonText = (text: string, noUser?: true) => {
   <Transition>
     <div class="wrapper" v-if="props.show">
     <div class="background" v-if="props.show" @click="$emit('close')"></div>
-      <div class="modal">
+      <div id="modal">
         <div class="step" v-if="step === Step.Intro">
           <h1>Support the DJs</h1>
           <button :disabled="buttonDisabled" @click="clickGetAnNft">Donate 5 DAI for the NFT</button>
@@ -220,11 +220,11 @@ const buttonText = (text: string, noUser?: true) => {
   transition: all .5s linear;
 }
 
-.v-leave-to .modal {
+.v-leave-to #modal {
   transform: translateY(100vh) rotate(160deg);
 }
 
-.v-enter-from .modal {
+.v-enter-from #modal {
   transform: translateY(100vh) rotate3d(1, 1, 1, 180deg);
 }
 
@@ -245,7 +245,7 @@ const buttonText = (text: string, noUser?: true) => {
   transition: all .5s linear;
 }
 
-.modal {
+#modal {
   background-color: red;
   box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.4), 0px 11px 26px rgba(0, 0, 0, 0.25), inset 0px -4px 30px rgba(0, 0, 0, 0.8);
   padding: 32px;

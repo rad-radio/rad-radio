@@ -45,19 +45,58 @@ header {
 
 #wallet-container {
   border:red solid;
+  color: red;
   border-radius: 40px;
   padding: 8px 8px 8px 16px;
 }
 
 #small-wallet {
-  background:red;
-  color: white;
+  background:transparent;
+  color: red;
   border-radius: 40px;
   padding: 8px 16px;
+  border: 1.5px solid red;
 }
 
 .disconnect {
   position: relative;
+}
+
+.btn {
+  color:red !important;
+  border: 2px solid red;
+  background-color: transparent !important;
+  border-radius: 48px !important;
+  text-transform: uppercase;
+  font-feature-settings: "ss02" off;
+}
+
+.modal {
+  background-color: transparent !important;
+}
+
+.logo {
+  border-radius: 48px !important;
+}
+
+.item {
+  color: white !important;
+}
+
+.line {
+  display: none !important;
+}
+
+.wallet-item:hover {
+  background-color: #C5FF29 !important;
+}
+
+.wallet-item:hover .item {
+  color: red !important;
+}
+
+.modal-inner {
+  background: red !important;
 }
 
 .disconnect-overlay {
