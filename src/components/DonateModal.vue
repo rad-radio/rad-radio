@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import { BigNumber, Contract, ethers } from 'ethers';
-import { markRaw, onMounted, ref, watch } from 'vue';
-import { useEthers, useWallet } from 'vue-dapp';
+import { BigNumber, Contract } from 'ethers';
+import { markRaw, ref, watch } from 'vue';
+import { useEthers } from 'vue-dapp';
 
 import daiAbi from '../eth/abis/Dai.abi.json';
 import dripsTokenAbi from '../eth/abis/DripsToken.abi.json';
+import AddressCopyButton from './AddressCopyButton.vue';
 
 const props = defineProps({
   show: Boolean,
 });
 
-const COMMUNITY_CONTRACT_ADDRESS = '0x6999c2bf16a0a3fd416af24bde0e4d37b424da7d';
+const COMMUNITY_CONTRACT_ADDRESS = '0x0d5241b0896f7d7302a840c4dca8f5b7cf22de14';
 // rinkeby: const COMMUNITY_CONTRACT_ADDRESS = '0x89eb58c8598d07f14852ad74e242187dbcbdf7ec';
 const DAI_CONTRACT_ADDRESS = '0x6b175474e89094c44da98b954eedeac495271d0f';
 // rinkeby: const DAI_CONTRACT_ADDRESS = '0x5592ec0cfb4dbc12d3ab100b257153436a1f0fea';
@@ -27,8 +28,7 @@ enum Step {
   Error,
 }
 
-const { status, disconnect, error, walletName } = useWallet()
-const { address, balance, chainId, isActivated, provider, signer } = useEthers()
+const { address, provider, signer } = useEthers();
 
 const step = ref(Step.Intro);
 const buttonDisabled = ref(false);
@@ -159,7 +159,14 @@ const buttonText = (text: string, noUser?: true) => {
         <div class="step" v-if="step === Step.Intro">
           <h1>Support the DJs</h1>
           <button :disabled="buttonDisabled" @click="clickGetAnNft">Donate 5 DAI for the NFT</button>
-          <p class="link">Or send plain ETH or ERC-20</p>
+          <p @click="step = Step.ERC20" class="link">Or send plain ETH or ERC-20</p>
+        </div>
+        <div class="step" v-if="step === Step.ERC20">
+          <h1>💰 Donate ETH or ERC-20 💰</h1>
+          <p>It'll go straight to the artists!</p>
+          <img src="/address.svg" />
+          <AddressCopyButton address="0x1665f71Ca63cd880A6294a16F4342485bAc12A46" />
+          <button :disabled="buttonDisabled" @click="$emit('close')">Done</button>
         </div>
         <div class="step" v-else-if="step === Step.SetAmount">
           <h1>Choose your donation.<br>The minimum is 5 DAI.</h1>
@@ -262,6 +269,7 @@ const buttonText = (text: string, noUser?: true) => {
 
 .step > h1 {
   font-size: 32px;
+  font-feature-settings: "ss02" off;
 }
 
 .step > p {
@@ -298,6 +306,7 @@ button:disabled {
 
 .link {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 input {

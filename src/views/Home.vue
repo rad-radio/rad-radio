@@ -26,8 +26,9 @@
         <h3>Streamed with <a href="https://livepeer.org/" target="_blank">Livepeer</a></h3>
         <h1>Bauernfeind</h1>
         <h2 id="timer">
-          <vue-countdown :time="(1653508800 * 1000) - new Date().getTime()" v-slot="{ days, hours, minutes, seconds }">
-            {{ days }}D {{ hours }}H {{ minutes }}M {{ seconds }}S
+          <vue-countdown :time="(1653510600 * 1000) - new Date().getTime()" v-slot="{ days, hours, minutes, seconds }">
+            <span v-if="days !== 0 || hours !== 0 || minutes !== 0 || seconds !== 0">{{ days }}D {{ hours }}H {{ minutes }}M {{ seconds }}S</span>
+            <button class="watch-button" @click="$router.push('/stream')" v-if="(days === 0 && hours === 0 && minutes === 0 && seconds === 0)">WATCH THE STREAM</button>
           </vue-countdown>
         </h2>
     </div>
