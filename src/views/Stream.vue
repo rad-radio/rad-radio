@@ -29,7 +29,7 @@ const closeModal = () => {
   </div>
 
   <div id="tribals">
-      <div id="tribal1"></div>
+      <div id="logo">RAD RADIO</div>
       <div id="tribal2"></div>
       <div id="tribal3"></div>
       <div id="tribal4"></div>
@@ -48,5 +48,6 @@ const closeModal = () => {
   height: 100vh;
   width: 100vw;
   display: flex;
+  z-index: -1;
 }
 </style>

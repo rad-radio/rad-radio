@@ -26,7 +26,7 @@
         <h3>Streamed with <a href="https://livepeer.org/" target="_blank">Livepeer</a></h3>
         <h1>Bauernfeind</h1>
         <h2 id="timer">
-          <vue-countdown :time="(1653508800 * 1000) - new Date().getTime()" v-slot="{ days, hours, minutes, seconds }">
+          <vue-countdown :time="(1653510600 * 1000) - new Date().getTime()" v-slot="{ days, hours, minutes, seconds }">
             <span v-if="days !== 0 || hours !== 0 || minutes !== 0 || seconds !== 0">{{ days }}D {{ hours }}H {{ minutes }}M {{ seconds }}S</span>
             <button class="watch-button" @click="$router.push('/stream')" v-if="(days === 0 && hours === 0 && minutes === 0 && seconds === 0)">WATCH THE STREAM</button>
           </vue-countdown>
@@ -89,117 +89,5 @@ h3 a {
 h3 a:hover {
   border-radius: 100%;
   border: 2px solid red;
-}
-
-* {
-  --spinner-margin: 20px;
-}
-
-#spinners > * {
-  width: 150px;
-  height: 150px;
-  animation: spin 10s linear 0s infinite;
-  background-size: contain;
-  background-repeat: no-repeat;
-  position: fixed;
-}
-
-#spinner1 {
-  background-image: url(/spinner1.png);
-  top: var(--spinner-margin);
-  left: var(--spinner-margin);
-}
-
-#spinner2 {
-  background-image: url(/spinner2.png);
-  top: var(--spinner-margin);
-  right: var(--spinner-margin);
-}
-
-#spinner3 {
-  background-image: url(/spinner3.png);
-  bottom: var(--spinner-margin);
-  left: var(--spinner-margin);
-}
-
-#spinner4 {
-  background-image: url(/spinner4.png);
-  bottom: var(--spinner-margin);
-  right: var(--spinner-margin);
-}
-
-* {
-  --tribal-width: 300px;
-  --tribal-height: 80px;
-}
-
-#tribals > * {
-  background-size: contain;
-  background-repeat: no-repeat;
-  position: fixed;
-}
-
-#tribal1 /* top */ {
-  width: var(--tribal-width);
-  height: var(--tribal-height);
-  background-image: url(/tribal1.png);
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-}
-
-#tribal2 /* right */ {
-  height: var(--tribal-width);
-  width: var(--tribal-height);
-  background-image: url(/tribal2.png);
-  margin-top: auto;
-  margin-bottom: auto;
-  top: 0;
-  bottom: 0;
-  right: 0;
-}
-
-#tribal3 {
-  width: var(--tribal-height);
-  height: var(--tribal-width);
-  background-image: url(/tribal3.png);
-  margin-top: auto;
-  margin-bottom: auto;
-  top: 0;
-  bottom: 0;
-  left: 0;
-}
-
-#tribal4 /* bottom */ {
-  height: var(--tribal-height);
-  width: var(--tribal-width);
-  background-image: url(/tribal4.png);
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(180deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.watch-button {
-  margin-top: 16px;
-  font-feature-settings: "ss02" off;
-  font-weight: bold;
-  padding: 2vw;
-  border-radius: 128px;
-  outline: 2px solid blue;
 }
 </style>
