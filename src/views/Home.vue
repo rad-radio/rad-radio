@@ -20,10 +20,11 @@
     <div id="text">
         <!-- <h2>RAD RADIO</h2> -->
         <h3>Hosted by <a href="https://hoerberlin.com/" target="_blank">Hör</a></h3>
-        <h1>RAD</h1>
+        <h1>YUI</h1>
         <h3>Presented by <a href="https://radicle.xyz/" target="_blank">Radicle</a></h3>
-        <h1>RADIO</h1>
+        <h1>Yha Yha b2b<br>Jasmine Infiniti</h1>
         <h3>Streamed with <a href="https://livepeer.org/" target="_blank">Livepeer</a></h3>
+        <h1>Bauernfeind</h1>
         <h2 id="timer">
           <vue-countdown :time="(1653508800 * 1000) - new Date().getTime()" v-slot="{ days, hours, minutes, seconds }">
             {{ days }}D {{ hours }}H {{ minutes }}M {{ seconds }}S
@@ -64,7 +65,7 @@ h3 {
 
 h1 {
   /* font-size: 11vw; smaller headline for when the DJs are announced*/
-  font-size: 18vw;
+  font-size: 10vw;
   line-height: 85%;
   color:blue
 }
