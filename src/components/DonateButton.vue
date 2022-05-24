@@ -68,6 +68,8 @@ function pickColor(){
 }
 
 .button {
+  z-index: 1000;
+  position: relative;
   transition: .5s box-shadow ease-in-out;
   padding: 24px;
   border-radius: 48px;

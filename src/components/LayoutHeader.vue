@@ -44,6 +44,7 @@ header {
 }
 
 #wallet-container {
+  display: none;
   border:red solid;
   border-radius: 40px;
   padding: 8px 8px 8px 16px;
