@@ -17,12 +17,6 @@
     if (videoEl.value.canPlayType("application/vnd.apple.mpegurl")) {
       videoEl.value.src = SRC;
 
-      videoEl.value.addEventListener('error', (e) => {
-        if (videoEl.value?.error?.code === 4) {
-          setTimeout(init, 2000);
-        } 
-      });
-
       mux.monitor(videoEl.value, {
         debug: false,
         disableCookies: true,
@@ -46,12 +40,6 @@
           env_key: MUX_ENV, // required
           player_name: 'Main Player',
           player_init_time: window.muxPlayerInitTime,
-        }
-      });
-
-      hls.on(Hls.Events.ERROR, function (event, data) {
-        if (data.type === 'networkError') {
-          setTimeout(init, 2000);
         }
       });
     } else {
