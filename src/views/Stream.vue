@@ -49,4 +49,10 @@ const closeModal = () => {
   display: flex;
   z-index: -1;
 }
+
+@media (max-width: 691px) {
+  #logo {
+    display: none;
+  }
+}
 </style>
