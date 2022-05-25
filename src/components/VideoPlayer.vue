@@ -1,21 +1,45 @@
 <script setup lang="ts">
   import { onMounted, ref } from 'vue';
   import Hls from 'hls.js';
+  import mux from 'mux-embed';
 
   const videoEl = ref<HTMLVideoElement | null>(null);
   const muted = ref(true);
 
   const SRC = "https://livepeercdn.com/hls/fb8ehwxexly8qzep/index.m3u8";
+  const MUX_ENV = process.env.NODE_ENV === 'development' ? '7fau5vqe6508ki9ffst4qdl77' : 'mdahi90bvpttt7l6tkburhld9';
 
   onMounted(() => {
     if (!videoEl.value) throw new Error("Unable to initialize player");
   
     if (videoEl.value.canPlayType("application/vnd.apple.mpegurl")) {
       videoEl.value.src = SRC;
+
+      mux.monitor(videoEl.value, {
+        debug: false,
+        disableCookies: true,
+        data: {
+          env_key: MUX_ENV, // required
+          player_name: 'Main Player', // any arbitrary string you want to use to identify this player
+          player_init_time: window.muxPlayerInitTime,
+        }
+      });
     } else if (Hls.isSupported()) {
       const hls = new Hls();
       hls.loadSource(SRC);
       hls.attachMedia(videoEl.value);
+
+      mux.monitor(videoEl.value, {
+        debug: false,
+        disableCookies: true,
+        hlsjs: hls,
+        Hls: Hls,
+        data: {
+          env_key: MUX_ENV, // required
+          player_name: 'Main Player',
+          player_init_time: window.muxPlayerInitTime,
+        }
+      });
     } else {
       console.error("This is a legacy browser that doesn't support MSE");
     }
@@ -23,7 +47,7 @@
 </script>
 
 <template>
-  <video ref="videoEl" autoplay :muted="muted" @click="muted = true"/>
+  <video ref="videoEl" id="videoEl" autoplay :muted="muted" @click="muted = true"/>
   <Transition>
     <div class="muted-overlay" v-if="muted" @click="muted = false">
       <div class="content">
