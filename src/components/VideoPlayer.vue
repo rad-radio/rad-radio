@@ -6,16 +6,22 @@
   const videoEl = ref<HTMLVideoElement | null>(null);
   const muted = ref(true);
 
-  const SRC = "https://livepeercdn.com/hls/fb8ehwxexly8qzep/index.m3u8";
+  const SRC = "https://livepeercdn.com/hls/3841ort45mi0gnds/index.m3u8";
   const MUX_ENV = process.env.NODE_ENV === 'development' ? '7fau5vqe6508ki9ffst4qdl77' : 'mdahi90bvpttt7l6tkburhld9';
 
   window.muxPlayerInitTime = Date.now();
 
-  onMounted(() => {
-    if (!videoEl.value) throw new Error("Unable to initialize player");
-  
+  const init = () => {
+    if (!videoEl.value) throw new Error("Player not initialized");
+
     if (videoEl.value.canPlayType("application/vnd.apple.mpegurl")) {
       videoEl.value.src = SRC;
+
+      videoEl.value.addEventListener('error', (e) => {
+        if (videoEl.value?.error?.code === 4) {
+          setTimeout(init, 2000);
+        } 
+      });
 
       mux.monitor(videoEl.value, {
         debug: false,
@@ -42,9 +48,20 @@
           player_init_time: window.muxPlayerInitTime,
         }
       });
+
+      hls.on(Hls.Events.ERROR, function (event, data) {
+        if (data.type === 'networkError') {
+          setTimeout(init, 2000);
+        }
+      });
     } else {
       console.error("This is a legacy browser that doesn't support MSE");
     }
+  }
+
+  onMounted(() => {
+    if (!videoEl.value) throw new Error("Unable to initialize player");
+    init();
   });
 </script>
 
@@ -65,6 +82,7 @@ video {
   height: 100vh;
   width: 100vw;
   object-fit: cover;
+  background-color: black;
 }
 
 .v-leave-to {
