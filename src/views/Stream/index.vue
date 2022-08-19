@@ -12,6 +12,7 @@ import { increment as rtDbIncrement } from '@firebase/database';
 import bus from './reactionEventBus';
 import { Reaction } from './types';
 import ReactionFountain from '../../components/ReactionFountain.vue';
+import Chill from '../../components/Chill.vue';
 
 const modalShown = ref(false);
 
@@ -87,6 +88,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <Chill v-if="throttled" />
   <LayoutHeader />
   <ReactionFountain />
   <div id="spinners">
