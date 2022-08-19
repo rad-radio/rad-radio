@@ -26,7 +26,7 @@ function spawnParticle(reaction: Reaction) {
     {
       yPos: 0,
       opacity: 1,
-      xOffset: (Math.random() * 256) - 128,
+      xOffset: Math.random() * 256 - 64,
       swayOffset: 0,
       swayDirection: Math.random() > 0.5 ? 'left' : 'right',
       text: emojiMap[reaction],
