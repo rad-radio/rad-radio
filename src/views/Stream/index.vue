@@ -31,7 +31,31 @@ interface Reactions {
 
 const reactions = useLiveDoc<Reactions>("reactions", "reactions");
 
+const THROTTLE_PERIOD_SECS = 5;
+const throttled = ref(false);
+let reactionsInLastThrottlePeriod: number | undefined;
+
+function updateThrottle() {
+  if (reactionsInLastThrottlePeriod === undefined) {
+    reactionsInLastThrottlePeriod = 0;
+
+    setTimeout(() => {
+      reactionsInLastThrottlePeriod = undefined;
+      throttled.value = false;
+
+    }, THROTTLE_PERIOD_SECS * 1000);
+  }
+
+  reactionsInLastThrottlePeriod++;
+
+  if (reactionsInLastThrottlePeriod > 10) {
+    throttled.value = true;
+  }
+}
+
 function react(key: Reaction) {
+  updateThrottle();
+
   reactions.update({
     [key]: increment(1),
   });
@@ -85,12 +109,11 @@ onMounted(() => {
   </div>
   currentViewers: {{ viewCounter.val }}
 
-  <div class="reaction-buttons">
+  <div class="reaction-buttons" :class="{ throttled }">
     <button @click="() => react(Reaction.Alien)">👽</button>
     <button @click="() => react(Reaction.Music)">🎶</button>
     <button @click="() => react(Reaction.Heart)">❤️</button>
   </div>
-
 
   <div class="stream">
     <DonateModal @close="closeModal" :show="modalShown" />
@@ -106,6 +129,11 @@ onMounted(() => {
   width: 100vw;
   display: flex;
   z-index: -1;
+}
+
+.throttled {
+  pointer-events: none;
+  opacity: .5;
 }
 
 .reactions {
