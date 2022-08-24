@@ -121,8 +121,8 @@ onMounted(() => {
   </div>
 
   <div class="reaction-buttons">
-    <div class="reaction" :class="{ throttled }" v-for="(emoji, reaction) in emojiMap">
-      <button @click="() => react(reaction)">{{emoji}}</button>
+    <div class="reaction" @click="() => react(reaction)" :class="{ throttled }" v-for="(emoji, reaction) in emojiMap">
+      <span>{{emoji}}</span>
       <span class="count" v-if="reactions.doc?.value">{{getReactionCount(reaction)}}</span>
     </div>
   </div>
@@ -150,7 +150,7 @@ onMounted(() => {
 .stats {
   position: fixed;
   bottom: 128px;
-  border: 4px solid red;
+  border: 2px solid red;
   border-radius: 16px;
   left: 50%;
   transform: translateX(-50%);
@@ -171,7 +171,7 @@ onMounted(() => {
 }
 
 .stats > div:not(:last-child) {
-  border-right: 4px solid red;
+  border-right: 2px solid red;
 }
 
 .reactions {
@@ -196,6 +196,8 @@ onMounted(() => {
   align-items: center;
   transition: transform .3s;
   transform-origin: 50% 100%;
+  user-select: none;
+  cursor: pointer;
 }
 
 .reaction:not(.throttled):hover {
