@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import bus from '../views/Stream/reactionEventBus';
-import { Reaction } from '../views/Stream/types';
-import emojiMap from '../views/Stream/emojiMap';
+import { Reaction } from '../views/Stream/reactions';
+import { emojiMap } from '../views/Stream/reactions';
 
 const particlesParent = ref(null);
 

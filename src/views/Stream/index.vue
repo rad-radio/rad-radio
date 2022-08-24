@@ -10,7 +10,7 @@ import useRealtimeDbValue from '../../db/useRealtimeDbValue';
 import { increment } from '@firebase/firestore';
 import { increment as rtDbIncrement } from '@firebase/database';
 import bus from './reactionEventBus';
-import { Reaction } from './types';
+import { Reaction, emojiMap } from './reactions';
 import ReactionFountain from '../../components/ReactionFountain.vue';
 import Chill from '../../components/Chill.vue';
 
@@ -26,8 +26,8 @@ const closeModal = () => {
   modalShown.value = false;
 }
 
-interface Reactions {
-  [key: keyof Reaction]: number;
+type Reactions = {
+  [key in Reaction]: number;
 }
 
 const reactions = useLiveDoc<Reactions>("reactions", "reactions");
@@ -57,6 +57,8 @@ function updateThrottle() {
 function react(key: Reaction) {
   updateThrottle();
 
+  if (throttled.value) return;
+
   reactions.update({
     [key]: increment(1),
   });
@@ -67,16 +69,20 @@ reactions.registerListener((doc, prevDoc) => {
 
   let increasedReaction: Reaction | undefined = undefined;
 
-  for (const reaction: Reaction in doc) {
-    const prevAmount = prevDoc[reaction];
+  for (const reaction in doc) {
+    const prevAmount = prevDoc[reaction as Reaction];
 
-    if (prevAmount < doc[reaction]) {
+    if (prevAmount < doc[reaction as Reaction]) {
       increasedReaction = reaction as Reaction;
     }
   }
 
   if (increasedReaction) bus.emit('reaction', increasedReaction);
 });
+
+function getReactionCount(reaction: Reaction) {
+  return reactions.doc?.value?.[reaction];
+}
 
 const viewCounter = useRealtimeDbValue<number>("viewersCount");
 
@@ -93,28 +99,32 @@ onMounted(() => {
   <ReactionFountain />
   <div id="spinners">
     <a id="spinner1" href="https://hoerberlin.com/" target="_blank"></a>
-    <a id="spinner3" href="https://livepeer.org/" target="_blank"></a>
-    <a id="spinner4" href="https://radicle.xyz/" target="_blank"></a>
+    <a id="spinner3" class="hideOnMobile" href="https://livepeer.org/" target="_blank"></a>
+    <a id="spinner4" class="hideOnMobile" href="https://radicle.xyz/" target="_blank"></a>
   </div>
 
   <div id="tribals">
     <div id="logo">RAD RADIO</div>
     <div id="tribal2"></div>
     <div id="tribal3"></div>
-    <div id="tribal4"></div>
   </div>
 
-  <div class="reactions" v-if="reactions.doc?.value">
-    <div class="reaction" v-for="(val, key) in reactions.doc.value">
-      {{key}}: {{val}}
+  <div class="stats">
+    <div class="donated">
+      <span class="count" v-if="viewCounter.val">1000 DAI</span>
+      <span class="label">DONATED</span>
+    </div>
+    <div class="online">
+      <span class="count" v-if="viewCounter.val">{{viewCounter.val}}</span>
+      <span class="label">WATCHING NOW</span>
     </div>
   </div>
-  currentViewers: {{ viewCounter.val }}
 
-  <div class="reaction-buttons" :class="{ throttled }">
-    <button @click="() => react(Reaction.Alien)">👽</button>
-    <button @click="() => react(Reaction.Music)">🎶</button>
-    <button @click="() => react(Reaction.Heart)">❤️</button>
+  <div class="reaction-buttons">
+    <div class="reaction" :class="{ throttled }" v-for="(emoji, reaction) in emojiMap">
+      <button @click="() => react(reaction)">{{emoji}}</button>
+      <span class="count" v-if="reactions.doc?.value">{{getReactionCount(reaction)}}</span>
+    </div>
   </div>
 
   <div class="stream">
@@ -134,8 +144,34 @@ onMounted(() => {
 }
 
 .throttled {
-  pointer-events: none;
   opacity: .5;
+}
+
+.stats {
+  position: fixed;
+  bottom: 128px;
+  border: 4px solid red;
+  border-radius: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: red;
+  display: flex;
+}
+
+.stats > div {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.stats > div > .count {
+  font-size: 24px;
+}
+
+.stats > div:not(:last-child) {
+  border-right: 4px solid red;
 }
 
 .reactions {
@@ -146,20 +182,45 @@ onMounted(() => {
 .reaction-buttons {
   position: fixed;
   z-index: 100;
-  top: 48px;
-  left: 0px;
+  bottom: 2vh;
+  left: 50vw;
+  transform: translateX(-50%);
   display: flex;
-  gap: 8px;
-  background-color: green;
+  gap: 2vw;
 }
 
-.reaction-buttons>button {
-  background-color: red;
+.reaction {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  transition: transform .3s;
+  transform-origin: 50% 100%;
+}
+
+.reaction:not(.throttled):hover {
+  transform: scale(1.3);
+}
+
+.reaction:not(.throttled):active {
+  transform: scale(1.4);
+}
+
+.reaction > .count {
+  font-size: 16px;
+  color: red;
+}
+
+.reaction-buttons > div {
   font-size: 32px;
 }
 
 @media (max-width: 691px) {
   #logo {
+    display: none;
+  }
+
+  .hideOnMobile {
     display: none;
   }
 }
