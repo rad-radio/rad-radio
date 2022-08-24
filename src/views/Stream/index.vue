@@ -227,5 +227,9 @@ onMounted(() => {
   .hideOnMobile {
     display: none;
   }
+
+  .reaction:not(.throttled):hover {
+    transform: scale(1);
+  }
 }
 </style>
