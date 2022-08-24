@@ -188,11 +188,12 @@ onMounted(() => {
   left: 50vw;
   transform: translateX(-50%);
   display: flex;
-  gap: 2vw;
 }
 
 .reaction {
   display: flex;
+  width: 12vw;
+  max-width: 64px;
   flex-direction: column;
   gap: 4px;
   align-items: center;
