@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 .wrapper {
   position: fixed;
   height: 100vh;
