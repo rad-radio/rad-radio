@@ -216,7 +216,6 @@ const buttonText = (text: string, noUser?: true) => {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 100;
   transition: all .5s linear;
 }
 
@@ -253,7 +252,7 @@ const buttonText = (text: string, noUser?: true) => {
   margin: 16px;
   max-width: 576px;
   border-radius: 48px;
-  z-index: 10;
+  z-index: 1;
   transition: all .5s;
 }
 

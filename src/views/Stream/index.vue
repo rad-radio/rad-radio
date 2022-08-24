@@ -46,7 +46,7 @@ function updateThrottle() {
     reactionThrottleCount = 0;
   }, THROTTLE_TIMEOUT_SECS * 1000);
 
-  if (reactionThrottleCount >= 5) {
+  if (reactionThrottleCount >= 10) {
     throttled.value = true;
 
     setTimeout(() => {
@@ -129,8 +129,11 @@ onMounted(() => {
     </div>
   </div>
 
-  <div class="stream">
+  <div class="modal">
     <DonateModal @close="closeModal" :show="modalShown" />
+  </div>
+
+  <div class="stream">
     <VideoPlayer />
     <DonateButton class="donate-button" @click="donate" v-if="isActivated && !modalShown" />
   </div>
@@ -143,6 +146,10 @@ onMounted(() => {
   width: 100vw;
   display: flex;
   z-index: -1;
+}
+
+.modal {
+  z-index: 10;
 }
 
 .throttled {
