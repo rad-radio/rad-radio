@@ -20,7 +20,7 @@
   background-color: rgba(255,0,0,0.5);
   color: white;
   font-size: 16vw;
-  animation: blink 0.5s steps(1, end) infinite;
+  animation: blink 0.5s steps(1, end) infinite, zoom 0.5s infinite;
 }
 
 @keyframes blink {
@@ -29,6 +29,20 @@
   }
   50% {
     opacity: 1;
+  }
+}
+@keyframes zoom {
+  0% {
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(0.5);
+  }
+  75% {
+    transform: scale(0.6);
+  }
+  100% {
+    transform: scale(0.5);
   }
 }
 </style>

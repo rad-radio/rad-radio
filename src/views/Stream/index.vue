@@ -33,24 +33,26 @@ type Reactions = {
 const reactions = useLiveDoc<Reactions>("reactions", "reactions");
 
 const THROTTLE_PERIOD_SECS = 5;
+const THROTTLE_TIMEOUT_SECS = 10;
 const throttled = ref(false);
-let reactionsInLastThrottlePeriod: number | undefined;
+let reactionThrottleCount: number = 0;
+let throttleResetInterval: ReturnType<typeof setTimeout> | undefined;
 
 function updateThrottle() {
-  if (reactionsInLastThrottlePeriod === undefined) {
-    reactionsInLastThrottlePeriod = 0;
+  reactionThrottleCount++;
+
+  clearInterval(throttleResetInterval);
+  throttleResetInterval = setTimeout(() => {
+    reactionThrottleCount = 0;
+  }, THROTTLE_TIMEOUT_SECS * 1000);
+
+  if (reactionThrottleCount >= 5) {
+    throttled.value = true;
 
     setTimeout(() => {
-      reactionsInLastThrottlePeriod = undefined;
+      reactionThrottleCount = 0;
       throttled.value = false;
-
     }, THROTTLE_PERIOD_SECS * 1000);
-  }
-
-  reactionsInLastThrottlePeriod++;
-
-  if (reactionsInLastThrottlePeriod > 10) {
-    throttled.value = true;
   }
 }
 
@@ -194,7 +196,7 @@ onMounted(() => {
   flex-direction: column;
   gap: 4px;
   align-items: center;
-  transition: transform .3s;
+  transition: transform .3s, opacity .3s;
   transform-origin: 50% 100%;
   user-select: none;
   cursor: pointer;
