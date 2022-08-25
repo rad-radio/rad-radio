@@ -46,10 +46,8 @@ export default <T>(path: string, id: string) => {
 
   addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'hidden') {
-      console.log('unsub');
       unsubscribe();
     } else {
-      console.log('sub');
       subscribe();
     }
   });

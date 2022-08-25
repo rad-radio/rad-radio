@@ -1,18 +1,20 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { useEthers } from 'vue-dapp';
-import DonateButton from '../../components/DonateButton.vue';
-import DonateModal from '../../components/DonateModal.vue';
-import VideoPlayer from '../../components/VideoPlayer.vue';
-import LayoutHeader from '../../components/LayoutHeader.vue'
-import useLiveDoc from '../../db/useLiveDoc';
-import useRealtimeDbValue from '../../db/useRealtimeDbValue';
-import { increment } from '@firebase/firestore';
-import { increment as rtDbIncrement } from '@firebase/database';
-import bus from './reactionEventBus';
-import { Reaction, emojiMap } from './reactions';
-import ReactionFountain from '../../components/ReactionFountain.vue';
-import Chill from '../../components/Chill.vue';
+import { onMounted, ref } from "vue";
+import { useEthers } from "vue-dapp";
+import DonateButton from "../../components/DonateButton.vue";
+import DonateModal from "../../components/DonateModal.vue";
+import VideoPlayer from "../../components/VideoPlayer.vue";
+import LayoutHeader from "../../components/LayoutHeader.vue";
+import useLiveDoc from "../../db/useLiveDoc";
+import useRealtimeDbValue from "../../db/useRealtimeDbValue";
+import { increment } from "@firebase/firestore";
+import { increment as rtDbIncrement } from "@firebase/database";
+import bus from "./reactionEventBus";
+import { Reaction, emojiMap } from "./reactions";
+import ReactionFountain from "../../components/ReactionFountain.vue";
+import Chill from "../../components/Chill.vue";
+import useTokenBalances, { Token } from "./use/tokenBalances";
+import { formatEther, parseEther } from "@ethersproject/units";
 
 const modalShown = ref(false);
 
@@ -20,15 +22,15 @@ const { isActivated } = useEthers();
 
 const donate = async () => {
   modalShown.value = true;
-}
+};
 
 const closeModal = () => {
   modalShown.value = false;
-}
+};
 
 type Reactions = {
   [key in Reaction]: number;
-}
+};
 
 const reactions = useLiveDoc<Reactions>("reactions", "reactions");
 
@@ -79,7 +81,7 @@ reactions.registerListener((doc, prevDoc) => {
     }
   }
 
-  if (increasedReaction) bus.emit('reaction', increasedReaction);
+  if (increasedReaction) bus.emit("reaction", increasedReaction);
 });
 
 function getReactionCount(reaction: Reaction) {
@@ -88,10 +90,43 @@ function getReactionCount(reaction: Reaction) {
 
 const viewCounter = useRealtimeDbValue<number>("viewersCount");
 
+/*
+  The Alchemy token is domain-restricted, so it's safe to embed
+  it client-side.
+*/
+const { balances: tokenBalances } = useTokenBalances(
+  import.meta.env.VITE_ALCHEMY_TOKEN,
+  "0x1665f71Ca63cd880A6294a16F4342485bAc12A46"
+);
+
+const currentlyVisibleTokenBalance = ref<
+  { token: Token; formattedBalance: string } | undefined
+>();
+let currentlyVisibleTokenIndex = 0;
+
+function cycleCurrentlyVisibleToken() {
+  if (!tokenBalances.value) return;
+
+  const [tokenName, balance] = Object.entries(tokenBalances.value)[
+    currentlyVisibleTokenIndex
+  ];
+  currentlyVisibleTokenBalance.value = {
+    token: tokenName as Token,
+    formattedBalance: (+formatEther(balance)).toFixed(2),
+  };
+
+  currentlyVisibleTokenIndex = Object.keys(tokenBalances.value)[
+    currentlyVisibleTokenIndex + 1
+  ]
+    ? currentlyVisibleTokenIndex + 1
+    : 0;
+}
+
 onMounted(() => {
   viewCounter.set(rtDbIncrement(1));
-
   viewCounter.setOnDisconnect(rtDbIncrement(-1));
+
+  setInterval(cycleCurrentlyVisibleToken, 2000);
 });
 </script>
 
@@ -101,8 +136,18 @@ onMounted(() => {
   <ReactionFountain />
   <div id="spinners">
     <a id="spinner1" href="https://hoerberlin.com/" target="_blank"></a>
-    <a id="spinner3" class="hideOnMobile" href="https://livepeer.org/" target="_blank"></a>
-    <a id="spinner4" class="hideOnMobile" href="https://radicle.xyz/" target="_blank"></a>
+    <a
+      id="spinner3"
+      class="hideOnMobile"
+      href="https://livepeer.org/"
+      target="_blank"
+    ></a>
+    <a
+      id="spinner4"
+      class="hideOnMobile"
+      href="https://radicle.xyz/"
+      target="_blank"
+    ></a>
   </div>
 
   <div id="tribals">
@@ -113,19 +158,34 @@ onMounted(() => {
 
   <div class="stats">
     <div class="donated">
-      <span class="count" v-if="viewCounter.val">1000 DAI</span>
+      <div v-if="currentlyVisibleTokenBalance">
+        <span class="count"
+          >{{ currentlyVisibleTokenBalance.formattedBalance }}
+          {{ currentlyVisibleTokenBalance.token }}</span
+        >
+      </div>
+      <div v-else>
+        <span class="count">---</span>
+      </div>
       <span class="label">DONATED</span>
     </div>
     <div class="online">
-      <span class="count" v-if="viewCounter.val">{{viewCounter.val}}</span>
+      <span class="count" v-if="viewCounter.val">{{ viewCounter.val }}</span>
       <span class="label">WATCHING NOW</span>
     </div>
   </div>
 
   <div class="reaction-buttons">
-    <div class="reaction" @click="() => react(reaction)" :class="{ throttled }" v-for="(emoji, reaction) in emojiMap">
-      <span>{{emoji}}</span>
-      <span class="count" v-if="reactions.doc?.value">{{getReactionCount(reaction)}}</span>
+    <div
+      class="reaction"
+      @click="() => react(reaction)"
+      :class="{ throttled }"
+      v-for="(emoji, reaction) in emojiMap"
+    >
+      <span>{{ emoji }}</span>
+      <span class="count" v-if="reactions.doc?.value">{{
+        getReactionCount(reaction)
+      }}</span>
     </div>
   </div>
 
@@ -135,7 +195,11 @@ onMounted(() => {
 
   <div class="stream">
     <VideoPlayer />
-    <DonateButton class="donate-button" @click="donate" v-if="isActivated && !modalShown" />
+    <DonateButton
+      class="donate-button"
+      @click="donate"
+      v-if="isActivated && !modalShown"
+    />
   </div>
 </template>
 
@@ -153,7 +217,7 @@ onMounted(() => {
 }
 
 .throttled {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .stats {
@@ -165,6 +229,7 @@ onMounted(() => {
   transform: translateX(-50%);
   color: red;
   display: flex;
+  font-feature-settings: "ss02" off;
 }
 
 .stats > div {
@@ -175,8 +240,13 @@ onMounted(() => {
   white-space: nowrap;
 }
 
-.stats > div > .count {
+.stats .count {
   font-size: 24px;
+  text-transform: uppercase;
+}
+
+.stats > div {
+  min-width: 170px;
 }
 
 .stats > div:not(:last-child) {
@@ -195,6 +265,7 @@ onMounted(() => {
   left: 50vw;
   transform: translateX(-50%);
   display: flex;
+  font-feature-settings: "ss02" off;
 }
 
 .reaction {
@@ -204,7 +275,7 @@ onMounted(() => {
   flex-direction: column;
   gap: 4px;
   align-items: center;
-  transition: transform .3s, opacity .3s;
+  transition: transform 0.3s, opacity 0.3s;
   transform-origin: 50% 100%;
   user-select: none;
   cursor: pointer;

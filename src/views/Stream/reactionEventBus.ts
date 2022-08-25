@@ -1,5 +1,5 @@
 import mitt from 'mitt';
-import { Reaction } from './types';
+import { Reaction } from './reactions';
 
 type Events = {
   reaction: Reaction;
