@@ -105,7 +105,8 @@ const currentlyVisibleTokenBalance = ref<
 let currentlyVisibleTokenIndex = 0;
 
 function cycleCurrentlyVisibleToken() {
-  if (!tokenBalances.value) return;
+  if (!tokenBalances.value || Object.keys(tokenBalances.value).length === 0)
+    return;
 
   const [tokenName, balance] = Object.entries(tokenBalances.value)[
     currentlyVisibleTokenIndex
