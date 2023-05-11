@@ -8,6 +8,7 @@ import { fail } from 'assert';
   const muted = ref(true);
 
   const SOURCES = [
+    "https://livepeercdn.studio/hls/448eajb5s8hdem9r/index.m3u8", // TEST. TODO: REMOVE
     "https://livepeercdn.com/hls/fb8ehwxexly8qzep/index.m3u8", // HÖR PRIMARY
     "https://livepeercdn.com/hls/77e57mrk7b439j69/index.m3u8", // HÖR BACKUP
   ];
