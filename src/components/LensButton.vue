@@ -6,8 +6,8 @@ import { onMounted, reactive, ref } from 'vue';
 const hover = ref(false);
 
 let buttonProps = reactive({
-    x: 200,
-    y: 300,
+    x: 400,
+    y: 100,
     xspeed: 1,
     yspeed: 1,
     color: 'rgb(0,0,0)',
@@ -56,7 +56,7 @@ function pickColor(){
 
 <template>
   <div class="wrapper" :style="{ transform: `translate(${buttonProps.x}px, ${buttonProps.y}px)`}">
-    <div :style="{  backgroundColor: buttonProps.color }" @mouseenter="hover = true" @mouseleave="hover = false" class="button" ref="tvScreen">Donate and get an NFT</div>
+    <div :style="{  backgroundColor: buttonProps.color }" @mouseenter="hover = true" @mouseleave="hover = false" class="button" ref="tvScreen">Follow on lens and collect an NFT</div>
   </div>
 </template>
 

@@ -5,13 +5,23 @@ import DonateButton from '../components/DonateButton.vue';
 import DonateModal from '../components/DonateModal.vue';
 import VideoPlayer from '../components/VideoPlayer.vue';
 import LayoutHeader from '../components/LayoutHeader.vue'
+import LensButton from '../components/LensButton.vue'
+import LensModal from '../components/LensModal.vue'
 
 const modalShown = ref(false);
-
+const lensModalShown = ref(false);
 const { isActivated } = useEthers();
 
 const donate = async () => {
   modalShown.value = true;
+}
+
+const follow = async () => {
+  lensModalShown.value = true;
+}
+
+const closeModalShown = async () => {
+  modalShown.value = false;
 }
 
 const closeModal = () => {
@@ -35,9 +45,11 @@ const closeModal = () => {
   </div>
   
   <div class="stream">
+    <LensModal @close="closeModalShown" :show="lensModalShown"/>
     <DonateModal @close="closeModal" :show="modalShown"/>
     <VideoPlayer />
     <DonateButton class="donate-button" @click="donate" v-if="isActivated && !modalShown" />
+    <LensButton class="donate-button" @click="follow" v-if="isActivated && !modalShown" />
   </div>
 </template>
 

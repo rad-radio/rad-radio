@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@chenfengyuan/vue-countdown": "^2.0.0",
+    "@lens-protocol/client": "^1.0.1",
     "buffer": "^6.0.3",
     "ethers": "^5.5.2",
     "hls.js": "^1.1.5-0.canary.8383",
