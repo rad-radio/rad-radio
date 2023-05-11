@@ -33,7 +33,7 @@ type TokenBalanceList = { [key in Token]?: bigint };
 export default (
   alchemyApiToken: string,
   forAddress: string,
-  { updateIntervalDuration } = { updateIntervalDuration: 30 }
+  { updateIntervalDuration } = { updateIntervalDuration: 60 }
 ) => {
   const web3 = createAlchemyWeb3(
     `https://eth-mainnet.g.alchemy.com/v2/${alchemyApiToken}`
