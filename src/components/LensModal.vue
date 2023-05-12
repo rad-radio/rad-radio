@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import { BigNumber, Contract, ethers } from "ethers";
-import { LensClient, development } from "@lens-protocol/client";
-import { markRaw, ref, watch } from "vue";
+import { ref } from "vue";
 import { useEthers } from "vue-dapp";
-import { sign } from "crypto";
+import {
+  LensClient,
+  production,
+  development,
+  isRelayerResult,
+} from "@lens-protocol/client";
+
 const props = defineProps({
   show: Boolean,
 });
@@ -15,7 +19,7 @@ const lensClient = new LensClient({
 enum Step {
   Intro,
   Follow,
-  Mint,
+  Claim,
   Success,
   Error,
 }
@@ -23,14 +27,29 @@ enum Step {
 const step = ref(Step.Intro);
 const buttonDisabled = ref(false);
 const emit = defineEmits(["close"]);
-
 const { address, provider, signer } = useEthers();
 
-const lensLogin = async () => {
-  // error handling??
+const getDefaultLensProfile = async () => {
+  const allOwnedProfiles = await lensClient.profile.fetchAll({
+    ownedBy: [address.value],
+    limit: 1,
+  });
+  try {
+    return allOwnedProfiles.items[0];
+  } catch (e) {
+    return [];
+  }
+  // defaultProfile is a ProfileFragment
+};
 
-  if (!signer.value || !address.value)
-    throw new Error("Not connected to wallet");
+const lensLogin = async () => {
+  const lensProfile = await getDefaultLensProfile();
+
+  if (!lensProfile) {
+    step.value = Step.Claim;
+    return;
+  }
+
   const challenge = await lensClient.authentication.generateChallenge(
     address.value
   );
@@ -44,11 +63,19 @@ const followOnLens = async () => {
   const followTypedDataResult = await lensClient.profile.createFollowTypedData({
     follow: [
       {
-        profile: "0x7fc8",
+        // raave id
+        profile: "0x86b4",
       },
       {
-        profile: "0x03",
+        // radradio
+        profile: "0x01c992",
       },
+      // {
+      //   profile: "0x7fc8",
+      // },
+      // {
+      //   profile: "0x03",
+      // },
     ],
   });
 
@@ -64,10 +91,24 @@ const followOnLens = async () => {
     data.typedData.value
   );
 
-  await lensClient.transaction.broadcast({
+  const broadcastResult = await lensClient.transaction.broadcast({
     id: data.id,
     signature: signedTypedData,
   });
+
+  // broadcastResult is a Result object
+  const broadcastResultValue = broadcastResult.unwrap();
+
+  if (!isRelayerResult(broadcastResultValue)) {
+    console.log(`Something went wrong`, broadcastResultValue);
+    step.value = Step.Error;
+    return;
+  }
+
+  console.log(
+    `Transaction was successfuly broadcasted with txId ${broadcastResultValue.txId}`
+  );
+
   step.value = Step.Success;
 };
 
@@ -92,14 +133,36 @@ const clickCheers = () => {
             Follow
           </button>
         </div>
+        <div class="step" v-if="step === Step.Claim">
+          <h1>No address found!</h1>
+          <p>
+            Claim your lens address at
+            <a href="https://claim.lens.xyz/" target="_blank">claim.lens.xyz</a>
+          </p>
+          <button :disabled="buttonDisabled" @click="emit('close')">
+            Close
+          </button>
+        </div>
         <div class="step" v-else-if="step === Step.Success">
           <h1>Success!</h1>
           <p>
-            Your NFT has been minted and put into your wallet. Thanks for your
-            donation and enjoy the music.
+            You have successfully followed rAAvE and RadRadio on lens. You will
+            be able to collect the recording of the livestream afterwards!
+            <a
+              href="https://lenster.xyz/?text=Watching live now!&url=https://rad.lol&via=MyCoolApp&hashtags=radRadio,rAAvE"
+            >
+              Share on Lens</a
+            >
           </p>
           <button :disabled="buttonDisabled" @click="clickCheers">
             Cheers
+          </button>
+        </div>
+        <div class="step" v-else-if="step === Step.Error">
+          <h1>Something went wrong!</h1>
+          <p>Please try again later</p>
+          <button :disabled="buttonDisabled" @click="emit('close')">
+            Close
           </button>
         </div>
       </div>

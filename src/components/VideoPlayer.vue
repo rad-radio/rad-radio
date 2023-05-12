@@ -6,7 +6,7 @@
   const videoEl = ref<HTMLVideoElement | null>(null);
   const muted = ref(true);
 
-  const SRC = "https://livepeercdn.com/hls/fb8ehwxexly8qzep/index.m3u8";
+  const SRC = "https://livepeercdn.studio/hls/448eajb5s8hdem9r/index.m3u8";
   const MUX_ENV = process.env.NODE_ENV === 'development' ? '7fau5vqe6508ki9ffst4qdl77' : 'mdahi90bvpttt7l6tkburhld9';
 
   window.muxPlayerInitTime = Date.now();
