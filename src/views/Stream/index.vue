@@ -3,6 +3,8 @@ import { onMounted, ref } from "vue";
 import { useEthers } from "vue-dapp";
 import DonateButton from "../../components/DonateButton.vue";
 import DonateModal from "../../components/DonateModal.vue";
+import LensButton from "../../components/LensButton.vue";
+import LensModal from "../../components/LensModal.vue";
 import VideoPlayer from "../../components/VideoPlayer.vue";
 import LayoutHeader from "../../components/LayoutHeader.vue";
 import useLiveDoc from "../../db/useLiveDoc";
@@ -17,6 +19,7 @@ import useTokenBalances, { Token } from "./use/tokenBalances";
 import { formatEther, parseEther } from "@ethersproject/units";
 
 const modalShown = ref(false);
+const lensModalShown = ref(false);
 
 const { isActivated } = useEthers();
 
@@ -24,8 +27,16 @@ const donate = async () => {
   modalShown.value = true;
 };
 
+const lens = async () => {
+  lensModalShown.value = true;
+};
+
 const closeModal = () => {
   modalShown.value = false;
+};
+
+const closeLensModal = () => {
+  lensModalShown.value = false;
 };
 
 type Reactions = {
@@ -192,6 +203,7 @@ onMounted(() => {
 
   <div class="modal">
     <DonateModal @close="closeModal" :show="modalShown" />
+    <LensModal @close="closeLensModal" :show="lensModalShown" />
   </div>
 
   <div class="stream">
@@ -200,6 +212,11 @@ onMounted(() => {
       class="donate-button"
       @click="donate"
       v-if="isActivated && !modalShown"
+    />
+    <LensButton
+      class="lens-button"
+      @click="lens"
+      v-if="isActivated && !lensModalShown"
     />
   </div>
 </template>

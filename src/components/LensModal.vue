@@ -13,7 +13,7 @@ const props = defineProps({
 });
 
 const lensClient = new LensClient({
-  environment: development,
+  environment: production,
 });
 
 enum Step {
