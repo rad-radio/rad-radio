@@ -7,11 +7,14 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@alch/alchemy-web3": "^1.4.6",
     "@chenfengyuan/vue-countdown": "^2.0.0",
     "@lens-protocol/client": "^1.0.1",
     "buffer": "^6.0.3",
     "ethers": "^5.5.2",
+    "firebase": "^9.9.3",
     "hls.js": "^1.1.5-0.canary.8383",
+    "mitt": "^3.0.0",
     "mux-embed": "^4.9.1",
     "process": "^0.11.10",
     "util": "^0.12.4",
