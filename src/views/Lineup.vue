@@ -18,19 +18,22 @@
     </div>
 
     <div id="text">
-        <!-- <h2>RAD RADIO</h2> -->
-        <h3>Hosted by <a href="https://hoerberlin.com/" target="_blank">Hör</a></h3>
-        <h1>YUI</h1>
-        <h3>Presented by <a href="https://radicle.xyz/" target="_blank">Radicle</a></h3>
-        <h1>Yha Yha b2b<br>Jasmine Infiniti</h1>
-        <h3>Streamed with <a href="https://livepeer.org/" target="_blank">Livepeer</a></h3>
-        <h1>Bauernfeind</h1>
+        <!-- <h2>RAD RADIO presents</h2> -->
+        <h3>RAD RADIO presents</h3>
+        <h1>Veronika Fleyta</h1>
+        <h3>Hosted by <a href="https://twitter.com/letsraave?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank">rAAVE</a></h3>
+        <h1>Parallelle</h1>
+        <h3>Made possible by <a href="https://www.drips.network/" target="_blank">Drips</a>, <a href="https://livepeer.org/" target="_blank">Livepeer</a>, and <a href="https://streameth.org/" target="_blank">StreamETH</a></h3>
+        <h1>Xinobi Jamiie</h1>
+        <h3>Featuring <a href="https://www.lens.xyz/" target="_blank">Lens</a></h3>
+        
         <h2 id="timer">
           <vue-countdown :time="(1653510600 * 1000) - new Date().getTime()" v-slot="{ days, hours, minutes, seconds }">
             <span v-if="days !== 0 || hours !== 0 || minutes !== 0 || seconds !== 0">{{ days }}D {{ hours }}H {{ minutes }}M {{ seconds }}S</span>
             <button class="watch-button" @click="$router.push('/stream')" v-if="(days === 0 && hours === 0 && minutes === 0 && seconds === 0)">WATCH THE STREAM</button>
           </vue-countdown>
         </h2>
+
     </div>
   </div>
 </template>
@@ -66,7 +69,7 @@ h3 {
 
 h1 {
   /* font-size: 11vw; smaller headline for when the DJs are announced*/
-  font-size: 10vw;
+  font-size: 8vw;
   line-height: 85%;
   color:blue
 }

@@ -19,11 +19,11 @@
 
     <div id="text">
         <!-- <h2>RAD RADIO</h2> -->
-        <h3>Hosted by <a href="https://hoerberlin.com/" target="_blank">Hör</a></h3>
+        <h3>Hosted by <a href="https://twitter.com/letsraave?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank">RAAVE</a></h3>
         <h1>RAD</h1>
-        <h3>Presented by <a href="https://radicle.xyz/" target="_blank">Radicle</a></h3>
+        <h3>Made possible by <a href="https://www.drips.network/" target="_blank">Drips</a>, <a href="https://livepeer.org/" target="_blank">Livepeer</a>, and <a href="https://streameth.org/" target="_blank">StreamETH</a></h3>
         <h1>RADIO</h1>
-        <h3>Streamed with <a href="https://livepeer.org/" target="_blank">Livepeer</a></h3>
+        <h3>Featuring <a href="https://www.lens.xyz/" target="_blank">Lens</a></h3>
         <!-- <h2 id="timer">
           <vue-countdown :time="(1653510600 * 1000) - new Date().getTime()" v-slot="{ days, hours, minutes, seconds }">
             <span v-if="days !== 0 || hours !== 0 || minutes !== 0 || seconds !== 0">{{ days }}D {{ hours }}H {{ minutes }}M {{ seconds }}S</span>
