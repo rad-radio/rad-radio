@@ -5,7 +5,7 @@
   <div class="wrapper">
     <div id="spinners">
       <a id="spinner1" href="https://twitter.com/letsraave/" target="_blank"></a>
-      <div id="spinner2"></div>
+      <a id="spinner2" href="https://www.lens.xyz/" target="_blank"></a>
       <a id="spinner3" href="https://livepeer.org/" target="_blank"></a>
       <a id="spinner4" href="https://www.drips.network/" target="_blank"></a>
     </div>
@@ -21,11 +21,12 @@
         <!-- <h2>RAD RADIO</h2> -->
         <h3>RAD RADIO presents</h3>
         <h1>Veronika Fleyta</h1>
-        <h3>Hosted by <a href="https://twitter.com/letsraave?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank">rAAVE</a></h3>
+        <h3><a href="https://twitter.com/letsraave?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank">rAAVE</a> Live! in collaboration with <a href="https://www.lens.xyz/" target="_blank">Lens</a></h3>
         <h1>Parallelle</h1>
-        <h3>Made possible by <a href="https://www.drips.network/" target="_blank">Drips</a>, <a href="https://livepeer.org/" target="_blank">Livepeer</a>, and <a href="https://streameth.org/" target="_blank">StreamETH</a></h3>
-        <h1>Xinobi Jamiie</h1>
-        <h3>Featuring <a href="https://www.lens.xyz/" target="_blank">Lens</a></h3>
+        <h3>Made possible by <a href="https://www.drips.network/" target="_blank">Drips</a> and <a href="https://streameth.org/" target="_blank">StreamETH</a></h3>
+        <h1>Xinobi</h1>
+		<h3>Streamed with <a href="https://livepeer.org/" target="_blank">Livepeer</a></h3>
+        <h1>Jamiie</h1>
         <h2 id="timer">
           <vue-countdown :time="(1684082700 * 1000) - new Date().getTime()" v-slot="{ days, hours, minutes, seconds }">
             <span v-if="days !== 0 || hours !== 0 || minutes !== 0 || seconds !== 0">{{ days }}D {{ hours }}H {{ minutes }}M {{ seconds }}S</span>
@@ -66,8 +67,8 @@ h3 {
 }
 
 h1 {
-  font-size: 8vw;
-  line-height: 85%;
+  font-size: 7vw;
+  line-height: 56%;
   color:blue;
   margin: 16px 0;
 }
