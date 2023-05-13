@@ -24,12 +24,12 @@
         <h3>Presented by <a href="https://radicle.xyz/" target="_blank">Radicle</a></h3>
         <h1>RADIO</h1>
         <h3>Streamed with <a href="https://livepeer.org/" target="_blank">Livepeer</a></h3>
-        <!-- <h2 id="timer">
+        <h2 id="timer">
           <vue-countdown :time="(1653510600 * 1000) - new Date().getTime()" v-slot="{ days, hours, minutes, seconds }">
             <span v-if="days !== 0 || hours !== 0 || minutes !== 0 || seconds !== 0">{{ days }}D {{ hours }}H {{ minutes }}M {{ seconds }}S</span>
             <button class="watch-button" @click="$router.push('/stream')" v-else>WATCH THE STREAM</button>
           </vue-countdown>
-        </h2> -->
+        </h2>
     </div>
   </div>
 </template>
