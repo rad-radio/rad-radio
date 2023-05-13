@@ -56,7 +56,7 @@ function pickColor(){
 
 <template>
   <div class="wrapper" :style="{ transform: `translate(${buttonProps.x}px, ${buttonProps.y}px)`}">
-    <div :style="{  backgroundColor: buttonProps.color }" @mouseenter="hover = true" @mouseleave="hover = false" class="button" ref="tvScreen">Donate and get an NFT</div>
+    <div :style="{  backgroundColor: buttonProps.color }" @mouseenter="hover = true" @mouseleave="hover = false" class="button" ref="tvScreen">Support the DJs</div>
   </div>
 </template>
 

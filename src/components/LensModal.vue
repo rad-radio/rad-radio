@@ -148,7 +148,7 @@ const clickCheers = () => {
             You have successfully followed rAAVE and RadRadio on Lens. You will
             be able to collect the recording of the livestream afterwards!
             <a
-              href="https://lenster.xyz/?text=Watching%20live%20now!&url=https://rad.lol&via=MyCoolApp&hashtags=radRadio,rAAvE"
+              href="https://lenster.xyz/?text=Watching%20live%20now!&url=https://rad.lol&via=MyCoolApp&hashtags=radRadio,rAAVE"
             >
               Share on Lens</a
             >
