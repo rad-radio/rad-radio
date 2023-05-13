@@ -2,7 +2,7 @@
 // Inspired by https://github.com/AlessioMaddaluno/bouncing-dvd-logo
 import { onMounted, reactive, ref } from 'vue';
 
-  let speed = 10;
+let speed = 10;
 const hover = ref(false);
 
 let buttonProps = reactive({
