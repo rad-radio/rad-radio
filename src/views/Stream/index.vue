@@ -147,7 +147,7 @@ onMounted(() => {
   <LayoutHeader />
   <ReactionFountain />
   <div id="spinners">
-    <a id="spinner1" href="https://hoerberlin.com/" target="_blank"></a>
+    <a id="spinner1" href="https://twitter.com/letsraave/" target="_blank"></a>
     <a
       id="spinner3"
       class="hideOnMobile"
@@ -157,7 +157,7 @@ onMounted(() => {
     <a
       id="spinner4"
       class="hideOnMobile"
-      href="https://radicle.xyz/"
+      href="https://www.drips.network/"
       target="_blank"
     ></a>
   </div>
