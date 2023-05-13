@@ -158,7 +158,7 @@ const buttonText = (text: string, noUser?: true) => {
       <div id="modal">
         <div class="step" v-if="step === Step.Intro">
           <h1>Support the DJs</h1>
-          <button :disabled="buttonDisabled" @click="clickGetAnNft">Donate 5 DAI for the NFT</button>
+          <button :disabled="buttonDisabled" @click="clickGetAnNft">Donate 5 DAI to get an NFT</button>
           <p @click="step = Step.ERC20" class="link">Or send plain ETH or ERC-20</p>
         </div>
         <div class="step" v-if="step === Step.ERC20">
@@ -177,7 +177,7 @@ const buttonText = (text: string, noUser?: true) => {
           <p>(Make sure you have enough DAI in your wallet!)</p>
         </div>
         <div class="step" v-else-if="step === Step.ApproveContract">
-          <h1>Approve the Radicle Drips contract to take {{donateAmount}} of your DAI. You’ll need to open your wallet to do this.</h1>
+          <h1>Approve the Drips contract to take {{donateAmount}} of your DAI. You’ll need to open your wallet to do this.</h1>
           <p>Please note that you'll need to send another transaction to mint the NFT after this.</p>
           <button :disabled="buttonDisabled" @click="clickApprove">{{buttonText('Approve')}}</button>
         </div>
@@ -193,7 +193,7 @@ const buttonText = (text: string, noUser?: true) => {
         </div>
         <div class="step" v-else-if="step === Step.Error">
           <h1>😩 Oops!</h1>
-          <p>The transaction failed. Maybe you rejected it, or you don't have enough DAI in your wallet?</p>
+          <p>The transaction failed. Maybe you rejected it, or don't have enough DAI in your wallet?</p>
           <button :disabled="buttonDisabled" @click="clickRetry">{{buttonText('Retry')}}</button>
         </div>
       </div>
