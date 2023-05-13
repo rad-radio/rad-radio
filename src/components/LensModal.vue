@@ -123,20 +123,19 @@ const clickCheers = () => {
       <div class="background" v-if="props.show" @click="emit('close')"></div>
       <div id="modal">
         <div class="step" v-if="step === Step.Intro">
-          <h1>Follow on lens!</h1>
-          <button :disabled="buttonDisabled" @click="lensLogin">Login</button>
+          <button :disabled="buttonDisabled" @click="lensLogin">Sign in with Lens</button>
         </div>
         <div class="step" v-if="step === Step.Follow">
-          <h1>Follow rAAvE and RadRadio on lens</h1>
-          <p>You can collect the recording of the livestream afterwards!</p>
+          <h1>Follow rAAVE and RadRadio on Lens</h1>
+          <p>If you do, you’ll be able to collect the recording of the livestream afterwards!</p>
           <button :disabled="buttonDisabled" @click="followOnLens">
             Follow
           </button>
         </div>
         <div class="step" v-if="step === Step.Claim">
-          <h1>No address found!</h1>
+          <h1>No handle found!</h1>
           <p>
-            Claim your lens address at
+            Claim a Lens handle at
             <a href="https://claim.lens.xyz/" target="_blank">claim.lens.xyz</a>
           </p>
           <button :disabled="buttonDisabled" @click="emit('close')">
@@ -146,10 +145,10 @@ const clickCheers = () => {
         <div class="step" v-else-if="step === Step.Success">
           <h1>Success!</h1>
           <p>
-            You have successfully followed rAAvE and RadRadio on lens. You will
+            You have successfully followed rAAVE and RadRadio on Lens. You will
             be able to collect the recording of the livestream afterwards!
             <a
-              href="https://lenster.xyz/?text=Watching live now!&url=https://rad.lol&via=MyCoolApp&hashtags=radRadio,rAAvE"
+              href="https://lenster.xyz/?text=Watching%20live%20now!&url=https://rad.lol&via=MyCoolApp&hashtags=radRadio,rAAvE"
             >
               Share on Lens</a
             >
