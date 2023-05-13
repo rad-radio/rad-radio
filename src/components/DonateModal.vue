@@ -81,7 +81,7 @@ const toWei = (dai: BigNumber) => dai.mul('1000000000000000000');
 const clickGetAnNft = () => {
   step.value = Step.SetAmount;
 }
-    
+
 const clickSetAmount = async () => {
   if (!donateAmount.value) throw new Error("Expected donate amount");
 
