@@ -16,11 +16,6 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Stream',
     component: Stream,
   },
-  {
-    path: '/lineup',
-    name: 'Lineup',
-    component: Lineup,
-  },
   // Fallback route for handling 404s
   {
     path: '/:pathMatch(.*)*',

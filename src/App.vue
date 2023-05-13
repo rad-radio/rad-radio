@@ -119,4 +119,11 @@
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 534px) {
+  #spinners > * {
+    width: 95px;
+    height: 95px;
+  }
+}
 </style>
