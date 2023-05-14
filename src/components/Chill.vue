@@ -6,12 +6,14 @@
 
 <style scoped>
 .wrapper {
+  user-select: none;
   position: fixed;
   height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  pointer-events: none;
 }
 
 .chill {
