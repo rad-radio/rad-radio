@@ -18,13 +18,13 @@
 }
 
 #spinner1 {
-  background-image: url(/spinner1.png);
+  background-image: url(/spinner2.png);
   top: var(--spinner-margin);
   left: var(--spinner-margin);
 }
 
 #spinner2 {
-  background-image: url(/spinner2.png);
+  background-image: url(/spinner1.png);
   top: var(--spinner-margin);
   right: var(--spinner-margin);
 }
@@ -37,6 +37,12 @@
 
 #spinner4 {
   background-image: url(/spinner4.png);
+  bottom: var(--spinner-margin);
+  right: var(--spinner-margin);
+}
+
+#spinner5 {
+  background-image: url(/spinner3.png);
   bottom: var(--spinner-margin);
   right: var(--spinner-margin);
 }
