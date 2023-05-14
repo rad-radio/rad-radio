@@ -5,7 +5,7 @@
   <div class="wrapper">
     <div id="spinners">
       <a id="spinner1" href="https://twitter.com/letsraave/" target="_blank"></a>
-      <a id="spinner2" href="https://www.lens.xyz/" target="_blank"></a>
+      <a id="spinner2" href="https://lenster.xyz/u/letsraave" target="_blank"></a>
       <a id="spinner3" href="https://livepeer.org/" target="_blank"></a>
       <a id="spinner4" href="https://www.drips.network/" target="_blank"></a>
     </div>
