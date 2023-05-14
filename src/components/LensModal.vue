@@ -112,7 +112,7 @@ const followOnLens = async () => {
   step.value = Step.Success;
 };
 
-const clickCheers = () => {
+const close = () => {
   emit("close");
 };
 </script>
@@ -147,14 +147,16 @@ const clickCheers = () => {
           <p>
             You have successfully followed rAAVE and RadRadio on Lens. You will
             be able to collect the recording of the livestream afterwards!
-            <a
-              href="https://lenster.xyz/?text=Watching%20live%20now!&url=https://rad.lol&via=MyCoolApp&hashtags=radRadio,rAAVE"
-            >
-              Share on Lens</a
-            >
           </p>
-          <button :disabled="buttonDisabled" @click="clickCheers">
-            Cheers
+          <a
+            target="_blank"
+            href="https://lenster.xyz/?text=Watching%20live%20now!&url=https://rad.lol&via=MyCoolApp&hashtags=radRadio,rAAVE">
+            <button :disabled="buttonDisabled">
+              Share on Lens
+            </button>
+          </a>
+          <button @click="close" class="ghost" :disabled="buttonDisabled">
+            Close
           </button>
         </div>
         <div class="step" v-else-if="step === Step.Error">
@@ -235,12 +237,12 @@ const clickCheers = () => {
   text-align: center;
 }
 
-.step > h1 {
+.step>h1 {
   font-size: 32px;
   font-feature-settings: "ss02" off;
 }
 
-.step > p {
+.step>p {
   font-size: 18px;
   font-feature-settings: "ss02" off;
 }
@@ -270,6 +272,12 @@ button:disabled {
   border: white solid;
   background: transparent;
   cursor: not-allowed;
+}
+
+button.ghost {
+  background-color: transparent;
+  color: white;
+  font-size: 24px;
 }
 
 .link {
