@@ -21,7 +21,7 @@
         <!-- <h2>RAD RADIO</h2> -->
         <h3>RAD RADIO presents</h3>
         <h1>Veronika Fleyta</h1>
-        <h3><a href="https://twitter.com/letsraave?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank">rAAVE</a> Live! in collaboration with <a href="https://www.lens.xyz/" target="_blank">Lens</a></h3>
+        <h3><a href="https://twitter.com/letsraave?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank">rAAVE</a> Live! in collaboration with <a href="https://lenster.xyz/u/letsraave" target="_blank">Lens</a></h3>
         <h1>Parallelle</h1>
         <h3>Made possible by <a href="https://www.drips.network/" target="_blank">Drips</a> and <a href="https://streameth.org/" target="_blank">StreamETH</a></h3>
         <h1>Xinobi</h1>
