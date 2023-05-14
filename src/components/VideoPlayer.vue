@@ -184,6 +184,7 @@ video {
 }
 
 .muted-overlay {
+  user-select: none;
   position: absolute;
   left: 0;
   top: 0;
