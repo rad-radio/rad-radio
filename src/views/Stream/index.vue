@@ -239,6 +239,7 @@ onMounted(() => {
 }
 
 .stats {
+  user-select: none;
   position: fixed;
   bottom: 128px;
   border: 2px solid red;
