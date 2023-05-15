@@ -19,20 +19,14 @@
 
     <div id="text">
         <!-- <h2>RAD RADIO</h2> -->
-        <h3>RAD RADIO presents</h3>
-        <h1>Veronika Fleyta</h1>
-        <h3><a href="https://twitter.com/letsraave?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank">rAAVE</a> Live! in collaboration with <a href="https://lenster.xyz/u/letsraave" target="_blank">Lens</a></h3>
-        <h1>Parallelle</h1>
-        <h3>Made possible by <a href="https://www.drips.network/" target="_blank">Drips</a> and <a href="https://streameth.org/" target="_blank">StreamETH</a></h3>
-        <h1>Xinobi</h1>
-		<h3>Streamed with <a href="https://livepeer.org/" target="_blank">Livepeer</a></h3>
-        <h1>Jamiie</h1>
-        <h2 id="timer">
+        <h1>RAD</h1>
+        <h1>RADIO</h1>
+        <!-- <h2 id="timer">
           <vue-countdown :time="(1684082700 * 1000) - new Date().getTime()" v-slot="{ days, hours, minutes, seconds }">
             <span v-if="days !== 0 || hours !== 0 || minutes !== 0 || seconds !== 0">{{ days }}D {{ hours }}H {{ minutes }}M {{ seconds }}S</span>
             <button class="watch-button" @click="$router.push('/stream')" v-else>WATCH THE STREAM</button>
           </vue-countdown>
-        </h2>
+        </h2> -->
     </div>
   </div>
 </template>
