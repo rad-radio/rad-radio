@@ -19,8 +19,11 @@
 
     <div id="text">
         <!-- <h2>RAD RADIO</h2> -->
+		<h3>Live-streamed decentralized DJ sets</h3>
         <h1>RAD</h1>
+		<h3>Powered by <a href="https://livepeer.org/" target="_blank">Livepeer</a> and <a href="https://drips.network" target="_blank">Drips</a></h3>
         <h1>RADIO</h1>
+		<h3>Made in Berlin</h3>
         <!-- <h2 id="timer">
           <vue-countdown :time="(1684082700 * 1000) - new Date().getTime()" v-slot="{ days, hours, minutes, seconds }">
             <span v-if="days !== 0 || hours !== 0 || minutes !== 0 || seconds !== 0">{{ days }}D {{ hours }}H {{ minutes }}M {{ seconds }}S</span>
@@ -61,8 +64,8 @@ h3 {
 }
 
 h1 {
-  font-size: 7vw;
-  line-height: 56%;
+  font-size: 20vw;
+  line-height: 65%;
   color:blue;
   margin: 16px 0;
 }
