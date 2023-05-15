@@ -19,7 +19,7 @@
 
     <div id="text">
         <!-- <h2>RAD RADIO</h2> -->
-		<h3>Live-streamed decentralized DJ sets</h3>
+		<h3>Decentralized live-streamed DJ sets</h3>
         <h1>RAD</h1>
 		<h3>Powered by <a href="https://livepeer.org/" target="_blank">Livepeer</a> and <a href="https://drips.network" target="_blank">Drips</a></h3>
         <h1>RADIO</h1>
