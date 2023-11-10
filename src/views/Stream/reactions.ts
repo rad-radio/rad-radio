@@ -12,7 +12,7 @@ export const emojiMap = {
 //   [Reaction.Alarm]: "🚨",
   [Reaction.Applause]: "👏",
 //   [Reaction.Celebrate]: "🥳",
-//   [Reaction.Fire]: "🔥",
+  [Reaction.Fire]: "🔥",
   [Reaction.Rose]: "🌹",
   [Reaction.Surprise]: "😱",
   [Reaction.Heart]: "💖"
