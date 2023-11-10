@@ -29,7 +29,7 @@ const hover = ref(false);
               </div>
             </div>
 
-            <button v-else @click="open" class="btn">Connect Wallet</button>
+            <button v-else @click="open" class="btn">👛 Connect Wallet</button>
           </div>
         </div>
       </nav>
@@ -63,12 +63,16 @@ header {
 }
 
 .btn {
-  color:red !important;
-  border: 2px solid red;
-  background-color: transparent !important;
+  color: white !important;
+  border: 2px solid white;
+  background-color: rgba(0,0,0,0.5) !important;
   border-radius: 48px !important;
   text-transform: uppercase;
   font-feature-settings: "ss02" off;
+  padding-left: 0.75rem !important;
+  padding-right: 0.75rem !important;
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
 }
 
 .modal {

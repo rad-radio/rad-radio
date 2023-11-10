@@ -168,6 +168,20 @@ onMounted(() => {
     <div id="tribal3"></div>
   </div>
 
+  <div class="reaction-buttons">
+    <div
+      class="reaction"
+      @click="() => react(reaction)"
+      :class="{ throttled }"
+      v-for="(emoji, reaction) in emojiMap"
+    >
+      <span class="emoji">{{ emoji }}</span>
+      <span class="count" v-if="reactions.doc?.value">{{
+        getReactionCount(reaction)
+      }}</span>
+    </div>
+  </div>
+
   <div class="stats">
     <div class="donated">
       <div v-if="currentlyVisibleTokenBalance">
@@ -179,25 +193,11 @@ onMounted(() => {
       <div v-else>
         <span class="count">---</span>
       </div>
-      <span class="label">DONATED</span>
+      <span class="label">💸 Donated</span>
     </div>
     <div class="online">
       <span class="count" v-if="viewCounter.val">{{ viewCounter.val }}</span>
-      <span class="label">WATCHING NOW</span>
-    </div>
-  </div>
-
-  <div class="reaction-buttons">
-    <div
-      class="reaction"
-      @click="() => react(reaction)"
-      :class="{ throttled }"
-      v-for="(emoji, reaction) in emojiMap"
-    >
-      <span>{{ emoji }}</span>
-      <span class="count" v-if="reactions.doc?.value">{{
-        getReactionCount(reaction)
-      }}</span>
+      <span class="label">👀 Watching</span>
     </div>
   </div>
 
@@ -241,35 +241,42 @@ onMounted(() => {
 .stats {
   user-select: none;
   position: fixed;
-  bottom: 128px;
-  border: 2px solid red;
-  border-radius: 16px;
+  bottom: 1vh;
+  border-radius: 24px;
   left: 50%;
   transform: translateX(-50%);
-  color: red;
+  color: white;
+  background: RGBA(0,0,0,0.5);
+  border: 2px solid white;
   display: flex;
   font-feature-settings: "ss02" off;
-}
-
-.stats > div {
-  padding: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  white-space: nowrap;
-}
-
-.stats .count {
-  font-size: 24px;
   text-transform: uppercase;
 }
 
 .stats > div {
-  min-width: 170px;
+  padding: 4px 14px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  gap: 4px;
+}
+
+.stats .count {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.stats .label {
+	font-size: 12px;
+	letter-spacing: 1px;
+}
+
+.stats > div {
+  /* min-width: 170px; */
 }
 
 .stats > div:not(:last-child) {
-  border-right: 2px solid red;
+  border-right: 2px solid white;
 }
 
 .reactions {
@@ -280,7 +287,7 @@ onMounted(() => {
 .reaction-buttons {
   position: fixed;
   z-index: 100;
-  bottom: 2vh;
+  bottom: 56px;
   left: 50vw;
   transform: translateX(-50%);
   display: flex;
@@ -290,9 +297,8 @@ onMounted(() => {
 .reaction {
   display: flex;
   width: 12vw;
-  max-width: 64px;
+  max-width: 48px;
   flex-direction: column;
-  gap: 4px;
   align-items: center;
   transition: transform 0.3s, opacity 0.3s;
   transform-origin: 50% 100%;
@@ -300,21 +306,27 @@ onMounted(() => {
   cursor: pointer;
 }
 
-.reaction:not(.throttled):hover {
-  transform: scale(1.3);
+.reaction span.emoji {
+  transition: .2s all;
 }
 
-.reaction:not(.throttled):active {
-  transform: scale(1.4);
+.reaction:hover span.emoji {
+  transform: scale(1.2);
+}
+
+.reaction:active span.emoji {
+  transform: scale(1.1);
+  transition: .05s all;
 }
 
 .reaction > .count {
   font-size: 16px;
-  color: red;
+  color: white;
+  text-shadow: 0 0 8px black;
 }
 
 .reaction-buttons > div {
-  font-size: 32px;
+  font-size: 24px;
 }
 
 @media (max-width: 691px) {

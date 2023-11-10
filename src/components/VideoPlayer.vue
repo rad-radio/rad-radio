@@ -151,8 +151,7 @@ import { fail } from 'assert';
   <Transition>
     <div class="muted-overlay" v-if="muted" @click="muted = false">
       <div class="content">
-        <h1>🔊</h1>
-        UNMUTE
+        🔊 UNMUTE
       </div>
     </div>
   </Transition>
@@ -190,7 +189,7 @@ video {
   top: 0;
   right: 0;
   bottom: 0;
-  font-size: 24px;
+  font-size: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -208,13 +207,15 @@ video {
   flex-direction: column;
   gap: 16px;
   transition: all .3s;
-  background: red;
-  padding: 32px;
-  border-radius: 100%;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: 2px solid white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 24px;
   font-feature-settings: "ss02" off;
 }
 
 .content h1 {
-  font-size: 48px;
+  font-size: 24px;
 }
 </style>

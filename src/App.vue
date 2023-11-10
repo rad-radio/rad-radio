@@ -9,8 +9,8 @@
 }
 
 #spinners > * {
-  width: 150px;
-  height: 150px;
+  width: 50px;
+  height: 50px;
   animation: spin 10s linear 0s infinite;
   background-size: contain;
   background-repeat: no-repeat;
@@ -89,7 +89,7 @@
   margin-bottom: auto;
   top: 0;
   bottom: 0;
-  right: 0;
+  right: -40px;
 }
 
 #tribal3 {
@@ -100,7 +100,7 @@
   margin-bottom: auto;
   top: 0;
   bottom: 0;
-  left: 0;
+  left: -32px;
 }
 
 #tribal4 /* bottom */ {
