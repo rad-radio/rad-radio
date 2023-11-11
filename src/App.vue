@@ -1,6 +1,32 @@
+<script lang="ts" setup>
+  // App.vue
+  import { MetaMaskConnector, WalletConnectConnector, CoinbaseWalletConnector } from 'vue-dapp'
+
+  const infuraId = '1c7ce1644b5b46f5a19028f13de996e4';
+
+  const connectors = [
+    new MetaMaskConnector({
+      appUrl: 'http://rad.lol/',
+    }),
+    new WalletConnectConnector({
+      projectId: '39a3e5b79543dc8196b1893d2ebb68c1',
+      chains: [1],
+      showQrModal: true,
+    }),
+    new CoinbaseWalletConnector({
+      appName: 'Rad Radio',
+      jsonRpcUrl: `https://mainnet.infura.io/v3/${infuraId}`,
+    }),
+  ]
+
+  function connectErrorHandler(error: Error) {
+    console.error(error)
+  }
+</script>
+
 <template>
   <router-view />
-  <vdapp-board />
+  <vd-board :connectErrorHandler="connectErrorHandler" :connectors="connectors" dark />
 </template>
 
 <style>

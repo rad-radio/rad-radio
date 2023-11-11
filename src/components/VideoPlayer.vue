@@ -2,7 +2,6 @@
   import { computed, onMounted, ref } from 'vue';
   import Hls, { ErrorDetails, ErrorTypes, Events as HlsEvents } from 'hls.js';
   import mux from 'mux-embed';
-import { fail } from 'assert';
 
   const videoEl = ref<HTMLMediaElement | null>(null);
   const muted = ref(true);

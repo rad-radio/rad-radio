@@ -1,7 +1,7 @@
 export enum Reaction {
-  Alarm = 'alarm',
+  // Alarm = 'alarm',
   Applause = 'applause',
-  Celebrate = 'celebrate',
+  // Celebrate = 'celebrate',
   Fire = 'fire',
   Rose = 'rose',
   Surprise = 'surprise',
@@ -9,9 +9,9 @@ export enum Reaction {
 }
 
 export const emojiMap = {
-//   [Reaction.Alarm]: "🚨",
+  // [Reaction.Alarm]: "🚨",
   [Reaction.Applause]: "👏",
-//   [Reaction.Celebrate]: "🥳",
+  // [Reaction.Celebrate]: "🥳",
   [Reaction.Fire]: "🔥",
   [Reaction.Rose]: "🌹",
   [Reaction.Surprise]: "😱",

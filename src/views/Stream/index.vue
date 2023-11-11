@@ -45,8 +45,8 @@ type Reactions = {
 
 const reactions = useLiveDoc<Reactions>("reactions", "reactions");
 
-const THROTTLE_PERIOD_SECS = 5;
-const THROTTLE_TIMEOUT_SECS = 10;
+const THROTTLE_PERIOD_SECS = 3;
+const THROTTLE_TIMEOUT_SECS = 5;
 const throttled = ref(false);
 let reactionThrottleCount: number = 0;
 let throttleResetInterval: ReturnType<typeof setTimeout> | undefined;
@@ -269,10 +269,6 @@ onMounted(() => {
 .stats .label {
 	font-size: 12px;
 	letter-spacing: 1px;
-}
-
-.stats > div {
-  /* min-width: 170px; */
 }
 
 .stats > div:not(:last-child) {
