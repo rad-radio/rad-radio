@@ -158,8 +158,8 @@ const buttonText = (text: string, noUser?: true) => {
       <div id="modal">
         <div class="step" v-if="step === Step.Intro">
           <h1>Support the DJs</h1>
-          <button :disabled="buttonDisabled" @click="clickGetAnNft">Donate 5 DAI to get an NFT</button>
-          <p @click="step = Step.ERC20" class="link">Or donate in GHO!</p>
+          <button @click="step = Step.ERC20" :disabled="buttonDisabled">Donate GHO</button>
+          <p class="link" @click="clickGetAnNft">Or get the RAD RADIO NFT with DAI</p>
         </div>
         <div class="step" v-if="step === Step.ERC20">
           <h1>💰 Donate ETH or ERC-20 💰</h1>
