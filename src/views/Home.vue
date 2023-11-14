@@ -23,9 +23,9 @@
         <h2>RAD RADIO</h2>
         <h1>Jimi Jules</h1>
 		<h3>Decentralized live-streamed DJ sets</h3>
-        <h1>Henri Bergmann b2b Jamie</h1>
+        <h1>Henri Bergmann b2b Jamiie</h1>
 		<h3>Powered by <a href="https://livepeer.org/" target="_blank">Livepeer</a> and <a href="https://drips.network" target="_blank">Drips</a></h3>
-		<h1>Gallivanter</h1>
+		<h1>GALLiVANTER</h1>
 		<h3>Streamed by <a href="https://streameth.org/" target="_blank">StreamETH</a></h3>
 		<h1>Veronika Fleyta</h1>
 
