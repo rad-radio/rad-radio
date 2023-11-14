@@ -41,6 +41,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   position: fixed;
+  z-index: 100;
 }
 
 #spinner1 {
@@ -105,6 +106,7 @@
   margin-right: auto;
   left: 0;
   right: 0;
+  top: -30px;
 }
 
 #tribal2 /* right */ {
@@ -137,7 +139,7 @@
   margin-right: auto;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: -30px;
 }
 
 @keyframes spin {
@@ -152,10 +154,4 @@
   }
 }
 
-@media (max-width: 534px) {
-  #spinners > * {
-    width: 95px;
-    height: 95px;
-  }
-}
 </style>
