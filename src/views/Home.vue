@@ -38,12 +38,12 @@
         <h1>RADIO</h1>
 		<h3>Made in Berlin</h3> -->
 
-        <!-- <h2 id="timer">
-          <vue-countdown :time="(1684082700 * 1000) - new Date().getTime()" v-slot="{ days, hours, minutes, seconds }">
+        <h2 id="timer">
+          <vue-countdown :time="(1700074800 * 1000) - new Date().getTime()" v-slot="{ days, hours, minutes, seconds }">
             <span v-if="days !== 0 || hours !== 0 || minutes !== 0 || seconds !== 0">{{ days }}D {{ hours }}H {{ minutes }}M {{ seconds }}S</span>
             <button class="watch-button" @click="$router.push('/stream')" v-else>WATCH THE STREAM</button>
           </vue-countdown>
-        </h2> -->
+        </h2>
     </div>
   </div>
 </template>
@@ -80,7 +80,7 @@ h3 {
 /* When lineup */
 h1 {
   font-size: 6.5vw;
-  line-height: 65%;
+  line-height: 85%;
   color:blue;
   margin: 16px 0;
 }
@@ -131,7 +131,7 @@ h3 a:hover {
 }
 
 #timer {
-  margin-top: 32px;
+  margin-top: 8px;
 }
 
 @keyframes jiggle {
