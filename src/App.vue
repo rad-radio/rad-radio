@@ -50,16 +50,16 @@
   left: var(--spinner-margin);
 }
 
-#spinner2 {
-  background-image: url(/spinner1.png);
-  top: var(--spinner-margin);
-  right: var(--spinner-margin);
-}
-
 #spinner3 {
-  background-image: url(/spinner3.png);
+  background-image: url(/spinner1.png);
   bottom: var(--spinner-margin);
   left: var(--spinner-margin);
+}
+
+#spinner2 {
+  background-image: url(/spinner3.png);
+  top: var(--spinner-margin);
+  right: var(--spinner-margin);
 }
 
 #spinner4 {

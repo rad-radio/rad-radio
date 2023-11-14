@@ -151,7 +151,7 @@ onMounted(() => {
     <a
       id="spinner3"
       class="hideOnMobile"
-      href="https://livepeer.org/"
+      href="https://twitter.com/letsraave/"
       target="_blank"
     ></a>
     <a
