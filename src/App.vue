@@ -1,6 +1,8 @@
 <script lang="ts" setup>
   // App.vue
   import { MetaMaskConnector, WalletConnectConnector, CoinbaseWalletConnector } from 'vue-dapp'
+  import { WalletConnectModal } from '@walletconnect/modal'
+  console.log(WalletConnectModal)
 
   const infuraId = '1c7ce1644b5b46f5a19028f13de996e4';
 
