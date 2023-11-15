@@ -147,7 +147,7 @@ onMounted(() => {
   <LayoutHeader />
   <ReactionFountain />
   <div id="spinners">
-    <a id="spinner1" href="https://hey.xyz/u/letsraave" target="_blank"></a>
+    <a id="spinner1" href="https://hey.xyz/?text=Watching%20live%20now!&url=https://rad.lol&via=MyCoolApp&hashtags=radRadio,rAAVE" target="_blank"></a>
     <a
       id="spinner3"
       class="hideOnMobile"
@@ -267,7 +267,7 @@ onMounted(() => {
 }
 
 .stats .label {
-	font-size: 12px;
+	font-size: 16px;
 	letter-spacing: 1px;
 }
 

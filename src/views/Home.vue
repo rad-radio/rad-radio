@@ -39,7 +39,7 @@
 		<h3>Made in Berlin</h3> -->
 
         <h2 id="timer">
-          <vue-countdown :time="(1700074800 * 1000) - new Date().getTime()" v-slot="{ days, hours, minutes, seconds }">
+          <vue-countdown :time="(1700071200 * 1000) - new Date().getTime()" v-slot="{ days, hours, minutes, seconds }">
             <span v-if="days !== 0 || hours !== 0 || minutes !== 0 || seconds !== 0">{{ days }}D {{ hours }}H {{ minutes }}M {{ seconds }}S</span>
             <button class="watch-button" @click="$router.push('/stream')" v-else>WATCH THE STREAM</button>
           </vue-countdown>
