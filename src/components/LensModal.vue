@@ -150,7 +150,7 @@ const close = () => {
           </p>
           <a
             target="_blank"
-            href="https://lenster.xyz/?text=Watching%20live%20now!&url=https://rad.lol&via=MyCoolApp&hashtags=radRadio,rAAVE">
+            href="https://hey.xyz/?text=Watching%20live%20now!&url=https://rad.lol&via=MyCoolApp&hashtags=radRadio,rAAVE">
             <button :disabled="buttonDisabled">
               Share on Lens
             </button>
