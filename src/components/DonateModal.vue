@@ -162,7 +162,7 @@ const buttonText = (text: string, noUser?: true) => {
           <p class="link" @click="clickGetAnNft">Or get the RAD RADIO NFT with DAI</p>
         </div>
         <div class="step" v-if="step === Step.ERC20">
-          <h1>💰 Donate ETH or ERC-20 💰</h1>
+          <h1>💰 Donate GHO or ERC-20 💰</h1>
           <p>It'll go straight to the artists!</p>
           <img src="/address.svg" />
           <AddressCopyButton address="0x1665f71Ca63cd880A6294a16F4342485bAc12A46" />
