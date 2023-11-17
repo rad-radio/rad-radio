@@ -19,7 +19,7 @@
 
     <div id="text">
 
-		<!-- When lineup -->
+		<!-- When lineup
         <h2>RAD RADIO</h2>
         <h1>Jimi Jules</h1>
 		<h3>Decentralized live-streamed DJ sets</h3>
@@ -27,23 +27,22 @@
 		<h3>Powered by <a href="https://livepeer.org/" target="_blank">Livepeer</a> and <a href="https://drips.network" target="_blank">Drips</a></h3>
 		<h1>GALLiVANTER</h1>
 		<h3>Streamed by <a href="https://streameth.org/" target="_blank">StreamETH</a></h3>
-		<h1>Veronika Fleyta</h1>
+		<h1>Veronika Fleyta</h1> -->
 
-		<!-- 
-		When no lineup
+		<!-- When no lineup -->
 			
 		<h3>Decentralized live-streamed DJ sets</h3>
         <h1>RAD</h1>
 		<h3>Powered by <a href="https://livepeer.org/" target="_blank">Livepeer</a> and <a href="https://drips.network" target="_blank">Drips</a></h3>
         <h1>RADIO</h1>
-		<h3>Made in Berlin</h3> -->
+		<h3>Streamed by <a href="https://streameth.org/" target="_blank">StreamETH</a></h3>
 
-        <h2 id="timer">
+       <!-- <h2 id="timer">
           <vue-countdown :time="(1700071200 * 1000) - new Date().getTime()" v-slot="{ days, hours, minutes, seconds }">
             <span v-if="days !== 0 || hours !== 0 || minutes !== 0 || seconds !== 0">{{ days }}D {{ hours }}H {{ minutes }}M {{ seconds }}S</span>
             <button class="watch-button" @click="$router.push('/stream')" v-else>WATCH THE STREAM</button>
           </vue-countdown>
-        </h2>
+        </h2> -->
     </div>
   </div>
 </template>
@@ -77,23 +76,25 @@ h3 {
   cursor: default;
 }
 
-/* When lineup */
+/* When lineup
 h1 {
   font-size: 6.5vw;
   line-height: 85%;
   color:blue;
   margin: 16px 0;
 }
+*/
 
 /* 
 When no lineup
+*/
 
 h1 {
   font-size: 20vw;
   line-height: 65%;
   color:blue;
   margin: 16px 0;
-} */
+}
 
 h2 {
   font-size: 2vw;
