@@ -3,7 +3,6 @@ import { onMounted, ref } from "vue";
 import { useEthers } from "vue-dapp";
 import DonateButton from "../../components/DonateButton.vue";
 import DonateModal from "../../components/DonateModal.vue";
-import LensButton from "../../components/LensButton.vue";
 import LensModal from "../../components/LensModal.vue";
 import VideoPlayer from "../../components/VideoPlayer.vue";
 import LayoutHeader from "../../components/LayoutHeader.vue";
@@ -212,11 +211,6 @@ onMounted(() => {
       class="donate-button"
       @click="donate"
       v-if="isActivated && !modalShown"
-    />
-    <LensButton
-      class="lens-button"
-      @click="lens"
-      v-if="isActivated && !lensModalShown"
     />
   </div>
 </template>
