@@ -19,30 +19,33 @@
 
     <div id="text">
 
-		<!-- When lineup
-        <h2>RAD RADIO</h2>
-        <h1>Jimi Jules</h1>
-		<h3>Decentralized live-streamed DJ sets</h3>
-        <h1>Henri Bergmann b2b Jamiie</h1>
-		<h3>Powered by <a href="https://livepeer.org/" target="_blank">Livepeer</a> and <a href="https://drips.network" target="_blank">Drips</a></h3>
-		<h1>GALLiVANTER</h1>
-		<h3>Streamed by <a href="https://streameth.org/" target="_blank">StreamETH</a></h3>
-		<h1>Veronika Fleyta</h1> -->
-
-		<!-- When no lineup -->
-			
-		<h3>Decentralized live-streamed DJ sets</h3>
-        <h1>RAD</h1>
-		<h3>Powered by <a href="https://livepeer.org/" target="_blank">Livepeer</a> and <a href="https://drips.network" target="_blank">Drips</a></h3>
-        <h1>RADIO</h1>
-		<h3>Streamed by <a href="https://streameth.org/" target="_blank">StreamETH</a></h3>
-
-       <!-- <h2 id="timer">
-          <vue-countdown :time="(1702062000 * 1000) - new Date().getTime()" v-slot="{ days, hours, minutes, seconds }">
-            <span v-if="days !== 0 || hours !== 0 || minutes !== 0 || seconds !== 0">{{ days }}D {{ hours }}H {{ minutes }}M {{ seconds }}S</span>
-            <button class="watch-button" @click="$router.push('/stream')" v-else>WATCH THE STREAM</button>
-          </vue-countdown>
-        </h2> -->
+		<!-- When lineup -->
+        <h2>Refraction Miami</h2>
+        <h4>Featuring Miami Community Radio residents</h4>
+        <h1>The Andes Connection</h1>
+        <!-- <h3>Decentralized live-streamed DJ sets</h3> -->
+        <h3>Powered by <a href="https://livepeer.org/" target="_blank">Livepeer</a> and <a href="https://drips.network" target="_blank">Drips</a> Streamed by <a href="https://streameth.org/" target="_blank">StreamETH</a></h3>
+        <h1>Duality B2B cybashawty</h1>
+        <h3>Live A/V performance from</h3>
+        <h1>Sad MC’s</h1>
+        <h3>Powered by Rad Radio</h3>
+        <h1>Albert DATA and The Glad Scientist</h1>
+        <h4>Made possible by: Sona, Resident Advisor, FWB, Sonar+D, Institut Ramon Llull</h4>
+        
+        <!-- When no lineup -->
+        
+        <!-- <h3>Decentralized live-streamed DJ sets</h3>
+          <h1>RAD</h1>
+          <h3>Powered by <a href="https://livepeer.org/" target="_blank">Livepeer</a> and <a href="https://drips.network" target="_blank">Drips</a></h3>
+          <h1>RADIO</h1>
+          <h3>Streamed by <a href="https://streameth.org/" target="_blank">StreamETH</a></h3> -->
+          
+          <h3 id="timer">
+            <vue-countdown :time="(1702062000 * 1000) - new Date().getTime()" v-slot="{ days, hours, minutes, seconds }">
+              <span v-if="days !== 0 || hours !== 0 || minutes !== 0 || seconds !== 0">{{ days }}D {{ hours }}H {{ minutes }}M {{ seconds }}S</span>
+              <button class="watch-button" @click="$router.push('/stream')" v-else>WATCH THE STREAM</button>
+            </vue-countdown>
+          </h3>
     </div>
   </div>
 </template>
@@ -76,18 +79,18 @@ h3 {
   cursor: default;
 }
 
-/* When lineup
+/* When lineup */
 h1 {
   font-size: 6.5vw;
   line-height: 85%;
   color:blue;
   margin: 16px 0;
 }
-*/
+
 
 /* 
 When no lineup
-*/
+
 
 h1 {
   font-size: 20vw;
@@ -95,6 +98,7 @@ h1 {
   color:blue;
   margin: 16px 0;
 }
+*/
 
 h2 {
   font-size: 2vw;
