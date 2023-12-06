@@ -24,13 +24,10 @@
         <h4>Featuring Miami Community Radio residents</h4>
         <h1>The Andes Connection</h1>
         <!-- <h3>Decentralized live-streamed DJ sets</h3> -->
-        <h3>Powered by <a href="https://livepeer.org/" target="_blank">Livepeer</a> and <a href="https://drips.network" target="_blank">Drips</a> Streamed by <a href="https://streameth.org/" target="_blank">StreamETH</a></h3>
+        <h4>Live A/V performance from Albert DATA and The Glad Scientist</h4>
         <h1>Duality B2B cybashawty</h1>
-        <h3>Live A/V performance from</h3>
-        <h1>Sad MC’s</h1>
-        <h3>Powered by Rad Radio</h3>
-        <h1>Albert DATA and The Glad Scientist</h1>
         <h4>Made possible by: Sona, Resident Advisor, FWB, Sonar+D, Institut Ramon Llull</h4>
+        <h1>Sad MC’s</h1>
         
         <!-- When no lineup -->
         
@@ -46,6 +43,7 @@
               <button class="watch-button" @click="$router.push('/stream')" v-else>WATCH THE STREAM</button>
             </vue-countdown>
           </h3>
+          <h4>Powered by Rad Radio</h4>
     </div>
   </div>
 </template>
