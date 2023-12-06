@@ -2,11 +2,14 @@ import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 import { ref, Ref, toRefs } from "vue";
 
 export enum Token {
-  GHO = "GHO",
+  DAI = "DAI",
+  USDC = "USDC",
+  ETH = "ETH",
 }
 
 const erc20TokenAdresses: { [key in Token]?: string } = {
-  [Token.GHO]: "0x40D16FC0246aD3160Ccc09B8D0D3A2cD28aE6C2f",
+  [Token.DAI]: "0x6b175474e89094c44da98b954eedeac495271d0f",
+  [Token.USDC]: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
 };
 
 function isToken(name: string): name is Token {
@@ -38,6 +41,10 @@ export default (
 
   const balances: Ref<TokenBalanceList> = ref({});
 
+  async function fetchEthBalance(address: string) {
+    return BigInt(await web3.eth.getBalance(address));
+  }
+
   async function fetchErc20Balances(address: string) {
     const balances = await web3.alchemy.getTokenBalances(
       address,
@@ -55,6 +62,7 @@ export default (
 
   async function update() {
     balances.value = {
+      ETH: await fetchEthBalance(forAddress),
       ...(await fetchErc20Balances(forAddress)),
     };
   }
