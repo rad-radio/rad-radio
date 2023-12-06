@@ -20,7 +20,7 @@
     <div id="text">
 
 		<!-- When lineup -->
-        <h2>Refraction Miami</h2>
+        <h2 class="red">Refraction <span class="kalam">Miami</span></h2>
         <h4>Featuring Miami Community Radio residents</h4>
         <h1>The Andes Connection</h1>
         <!-- <h3>Decentralized live-streamed DJ sets</h3> -->
@@ -103,6 +103,15 @@ h1 {
 h2 {
   font-size: 2vw;
   line-height: 120%;
+}
+
+.kalam {
+  font-family: "Kalam";
+  font-size: 5vw;
+}
+
+.red  {
+  color: red;
 }
 
 h3 {
