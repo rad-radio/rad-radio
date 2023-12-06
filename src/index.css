@@ -9,6 +9,11 @@ body {
   src: url("/fonts/ABCMaxiRoundVariable.woff2") format("woff2");
 }
 
+@font-face {
+  font-family: "Kalam";
+  src: url("/fonts/Kalam.woff2") format("woff2");
+}
+
 .btn {
   @apply px-6 py-3 rounded inline-block
     bg-gray-100 text-gray-600 cursor-pointer
