@@ -23,11 +23,11 @@
         <h2 class="red">Refraction <span class="kalam">Miami</span></h2>
         <h4>Featuring Miami Community Radio residents</h4>
         <h1>The Andes Connection</h1>
-        <!-- <h3>Decentralized live-streamed DJ sets</h3> -->
-        <h4>Live A/V performance from Albert DATA and The Glad Scientist</h4>
         <h1>Duality B2B cybashawty</h1>
-        <h4>Made possible by: Sona, Resident Advisor, FWB, Sonar+D, Institut Ramon Llull</h4>
         <h1>Sad MC’s</h1>
+        <!-- <h3>Decentralized live-streamed DJ sets</h3> -->
+        <h4>Live A/V performance from</h4>
+        <h1 class="small">Albert DATA and The Glad Scientist</h1>
         
         <!-- When no lineup -->
         
@@ -44,6 +44,7 @@
             </vue-countdown>
           </h3>
           <h4>Powered by Rad Radio</h4>
+          <h4>Made possible by: Sona, Resident Advisor, FWB, Sonar+D, Institut Ramon Llull</h4>
     </div>
   </div>
 </template>
@@ -79,10 +80,14 @@ h3 {
 
 /* When lineup */
 h1 {
-  font-size: 6.5vw;
+  font-size: 4vw;
   line-height: 85%;
   color:blue;
   margin: 16px 0;
+}
+
+h1.small {
+  font-size: 2vw;
 }
 
 
@@ -99,13 +104,13 @@ h1 {
 */
 
 h2 {
-  font-size: 2vw;
+  font-size: 4vw;
   line-height: 120%;
 }
 
 .kalam {
   font-family: "Kalam";
-  font-size: 5vw;
+  font-size: 7vw;
 }
 
 .red  {
@@ -113,7 +118,7 @@ h2 {
 }
 
 h3 {
-  font-size: 2vw;
+  font-size: 4vw;
   color: red;
   z-index: 100;
 }
@@ -170,16 +175,23 @@ h3 a:hover {
   }
 
   h1 {
-    font-size: 11vw;
-	  line-height: 110%;
+    font-size: 8vw;
+	  line-height: 50%;
+  }
+
+  h1.small {
+    font-size: 4vw;
   }
 
   h2 {
-    font-size: 5vw;
+    font-size: 9vw;
   }
 
   h3 {
     font-size: 4vw;
+  }
+  .kalam {
+    font-size: 14vw;
   }
 }
 </style>
