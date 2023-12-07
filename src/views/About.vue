@@ -20,7 +20,7 @@
     <div id="text">
 		<!-- When lineup -->
         <h1>RAD RADIO</h1>
-        <h4>RAD RADIO is a live music streaming platform built on <a href="https://livepeer.org/" target="_blank">Livepeer</a>, <a href="https://drips.network" target="_blank">Drips Network</a>, and <a href="https://streameth.org/" target="_blank">StreamETH</a></h4>
+        <h4>RAD RADIO is a live music streaming platform built on <a href="https://livepeer.org/" target="_blank">Livepeer</a>, <a href="https://drips.network" target="_blank">Drips Network</a>, and <a href="https://streameth.org/" target="_blank">StreamETH.</a></h4>
         <h4>We built it because we're tired of the middlemen.</h4>
         <!-- When no lineup -->
         
@@ -131,10 +131,10 @@ h3 a:hover {
 
 h4 {
   font-size: 2vw;
-  color: red;
+  color: black;
   z-index: 100;
   text-align: center;
-  width: 70%;
+  width: 60%;
   margin: 0 auto;
 }
 
