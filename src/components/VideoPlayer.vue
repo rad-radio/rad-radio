@@ -7,8 +7,7 @@ const videoEl = ref<HTMLMediaElement | null>(null);
 const muted = ref(true);
 
 const SOURCES = [
-  "https://livepeercdn.studio/hls/9c73muynt36mmi8j/index.m3u8", // PRIMARY
-  "https://livepeercdn.studio/hls/52b984114n3qoxs6/index.m3u8", // BACKUP
+  "https://livepeercdn.studio/hls/20e57wsusjfr84go/index.m3u8",
 ];
 const src = computed(() => SOURCES[srcIndex.value]);
 const srcIndex = ref(0);
