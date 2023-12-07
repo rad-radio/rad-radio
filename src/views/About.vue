@@ -4,10 +4,10 @@
 <template>
   <div class="wrapper">
     <div id="spinners">
-      <a id="spinner1" href="https://www.llull.cat/catala/home/index.cfm" target="_blank"></a>
-      <a id="spinner2" href="https://sona.stream/" target="_blank"></a>
-      <a id="spinner3" href="https://sonar.es/en" target="_blank"></a>
-      <a id="spinner4" href="https://www.refractionfestival.com/" target="_blank"></a>
+      <a id="spinner1" href="https://rad.lol/" target="_blank"></a>
+      <a id="spinner2" href="https://livepeer.org/" target="_blank"></a>
+      <a id="spinner3" href="https://www.drips.network/" target="_blank"></a>
+      <a id="spinner4" href="https://streameth.org/" target="_blank"></a>
     </div>
 
     <div id="tribals">
@@ -18,17 +18,10 @@
     </div>
 
     <div id="text">
-
 		<!-- When lineup -->
-        <h2 class="red">Refraction <span class="kalam">Miami</span></h2>
-        <h4>Featuring <a href="https://mcr.watch/Miami">Miami Community Radio</a> residents</h4>
-        <h1>The Andes Connection</h1>
-        <h1>Duality B2B cybashawty</h1>
-        <h1>Sad MC’s</h1>
-        <!-- <h3>Decentralized live-streamed DJ sets</h3> -->
-        <h4>Live A/V performance from</h4>
-        <h1 class="small">Albert.DATA and The Glad Scientist</h1>
-        
+        <h1>RAD RADIO</h1>
+        <h4>RAD RADIO is a live music streaming platform built on <a href="https://livepeer.org/" target="_blank">Livepeer</a>, <a href="https://drips.network" target="_blank">Drips Network</a>, and <a href="https://streameth.org/" target="_blank">StreamETH</a></h4>
+        <h4>We built it because we're tired of the middlemen.</h4>
         <!-- When no lineup -->
         
         <!-- <h3>Decentralized live-streamed DJ sets</h3>
@@ -36,15 +29,11 @@
           <h3>Powered by <a href="https://livepeer.org/" target="_blank">Livepeer</a> and <a href="https://drips.network" target="_blank">Drips</a></h3>
           <h1>RADIO</h1>
           <h3>Streamed by <a href="https://streameth.org/" target="_blank">StreamETH</a></h3> -->
-          
-          <h3 id="timer">
-            <vue-countdown :time="(1702062000 * 1000) - new Date().getTime()" v-slot="{ days, hours, minutes, seconds }">
-              <span v-if="days !== 0 || hours !== 0 || minutes !== 0 || seconds !== 0">{{ days }}D {{ hours }}H {{ minutes }}M {{ seconds }}S</span>
-              <button class="watch-button" @click="$router.push('/stream')" v-else>WATCH THE STREAM</button>
-            </vue-countdown>
-          </h3>
-          <h4>Powered by <router-link to="/about">Rad Radio</router-link></h4>
-          <h4>Made possible by: <a href="https://sona.stream/">Sona</a>, <a href="https://ra.co/">Resident Advisor</a>, <a href="https://www.fwb.help/">FWB</a>, <a href="https://sonar.es/en">Sonar+D</a>, <a href="https://www.llull.cat/catala/home/index.cfm">Institut Ramon Llull</a></h4>
+    </div>
+    <div id="social">
+        <h4>Follow us on <a href="https://twitter.com/RadRadioLive" target="_blank">Twitter.</a></h4>
+        <h4>Want to stream with us? <a href="mailto:radradiolive@gmail.com" target="_blank">Contact us.</a></h4>
+        <h1> ☢️ </h1>
     </div>
   </div>
 </template>
@@ -71,6 +60,14 @@
   height: 100%;
 }
 
+#social {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 75%;
+}
+
+
 h1,
 h2,
 h3 {
@@ -80,7 +77,7 @@ h3 {
 
 /* When lineup */
 h1 {
-  font-size: 4vw;
+  font-size: 6dvw;
   line-height: 85%;
   color:blue;
   margin: 16px 0;
@@ -130,6 +127,15 @@ h3 a {
 h3 a:hover {
   border-radius: 100%;
   border: 2px solid red;
+}
+
+h4 {
+  font-size: 2vw;
+  color: red;
+  z-index: 100;
+  text-align: center;
+  width: 70%;
+  margin: 0 auto;
 }
 
 h4 a:hover {

@@ -146,17 +146,17 @@ onMounted(() => {
   <LayoutHeader />
   <ReactionFountain />
   <div id="spinners">
-    <a id="spinner1" href="https://hey.xyz/?text=Watching%20live%20now!&url=https://rad.lol&via=MyCoolApp&hashtags=radRadio,rAAVE" target="_blank"></a>
+    <a id="spinner1" href="https://www.llull.cat/catala/home/index.cfm" target="_blank"></a>
     <a
       id="spinner3"
       class="hideOnMobile"
-      href="https://twitter.com/letsraave/"
+      href="https://sonar.es/en"
       target="_blank"
     ></a>
     <a
       id="spinner4"
       class="hideOnMobile"
-      href="https://www.drips.network/"
+      href="https://www.refractionfestival.com/"
       target="_blank"
     ></a>
   </div>
