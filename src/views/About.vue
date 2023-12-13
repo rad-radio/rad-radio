@@ -4,7 +4,7 @@
 <template>
   <div class="wrapper">
     <div id="spinners">
-      <a id="spinner1" href="https://rad.lol/" target="_blank"></a>
+      <a id="spinner1" href="/about"></a>
       <a id="spinner2" href="https://livepeer.org/" target="_blank"></a>
       <a id="spinner3" href="https://www.drips.network/" target="_blank"></a>
       <a id="spinner4" href="https://streameth.org/" target="_blank"></a>
@@ -18,22 +18,14 @@
     </div>
 
     <div id="text">
-		<!-- When lineup -->
-        <h1>RAD RADIO</h1>
-        <h4>RAD RADIO is a live music streaming platform built on <a href="https://livepeer.org/" target="_blank">Livepeer</a>, <a href="https://drips.network" target="_blank">Drips Network</a>, and <a href="https://streameth.org/" target="_blank">StreamETH.</a></h4>
-        <h4>We built it because we're tired of the middlemen.</h4>
-        <!-- When no lineup -->
-        
-        <!-- <h3>Decentralized live-streamed DJ sets</h3>
-          <h1>RAD</h1>
-          <h3>Powered by <a href="https://livepeer.org/" target="_blank">Livepeer</a> and <a href="https://drips.network" target="_blank">Drips</a></h3>
-          <h1>RADIO</h1>
-          <h3>Streamed by <a href="https://streameth.org/" target="_blank">StreamETH</a></h3> -->
-    </div>
-    <div id="social">
-        <h4>Follow us on <a href="https://twitter.com/RadRadioLive" target="_blank">Twitter.</a></h4>
-        <h4>Want to stream with us? <a href="mailto:radradiolive@gmail.com" target="_blank">Contact us.</a></h4>
-        <h1> ☢️ </h1>
+      <h3>A live music streaming platform built on <br class="desktop-break" /><a href="https://livepeer.org/" target="_blank">Livepeer</a>, <a href="https://drips.network" target="_blank">Drips Network</a>, and <a href="https://streameth.org/" target="_blank">StreamETH.</a></h3>
+      <h1>RAD</h1>
+      <h3>We built it because we’re tired of the middlemen.</h3>
+      <h1>RADIO</h1>
+      <h3>Want to stream with us? <a href="mailto:radradiolive@gmail.com" target="_blank">Contact us.</a></h3>
+      <h3>Follow us on <a href="https://x.com/RadRadioLive" target="_blank">X</a>.</h3>
+      <h3><a href="/">← Back</a> to home.</h3>
+
     </div>
   </div>
 </template>
@@ -77,7 +69,7 @@ h3 {
 
 /* When lineup */
 h1 {
-  font-size: 6dvw;
+  font-size: 20vw;
   line-height: 85%;
   color:blue;
   margin: 16px 0;
@@ -86,19 +78,6 @@ h1 {
 h1.small {
   font-size: 2vw;
 }
-
-
-/* 
-When no lineup
-
-
-h1 {
-  font-size: 20vw;
-  line-height: 65%;
-  color:blue;
-  margin: 16px 0;
-}
-*/
 
 h2 {
   font-size: 4vw;
@@ -115,9 +94,10 @@ h2 {
 }
 
 h3 {
-  font-size: 4vw;
+  font-size: 2vw;
   color: red;
   z-index: 100;
+  text-align: center;
 }
 
 h3 a {
@@ -186,7 +166,7 @@ h4 a:hover {
   }
 
   h1 {
-    font-size: 8vw;
+    font-size: 20vw;
 	  line-height: 50%;
   }
 
@@ -201,8 +181,8 @@ h4 a:hover {
   h3 {
     font-size: 4vw;
   }
-  .kalam {
-    font-size: 14vw;
-  }
+  .desktop-break {
+  display: none;
+}
 }
 </style>
